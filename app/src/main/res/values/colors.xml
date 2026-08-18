@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_main">#FAF9F6</color>
+    <color name="bg_bubble_ai">#FFFFFF</color>
+    <color name="bg_bubble_user">#E8E4DC</color>
+    <color name="accent">#C17A4E</color>
+    <color name="accent_dark">#A2603A</color>
+    <color name="text_primary">#2B2B29</color>
+    <color name="text_secondary">#7A7568</color>
+    <color name="code_bg">#1E1E1C</color>
+    <color name="code_text">#E8E6E1</color>
+    <color name="divider">#E5E1D8</color>
+    <color name="white">#FFFFFF</color>
+    <color name="danger">#B3453A</color>

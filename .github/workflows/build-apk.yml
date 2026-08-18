@@ -1,0 +1,56 @@
+name: Build ZekaTR APK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Kaynak kodu al
+        uses: actions/checkout@v4
+
+      - name: JDK 17 kur
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Gradle 8.4 kur
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.4'
+
+      - name: Android SDK araçlarını kur
+        uses: android-actions/setup-android@v3
+
+      - name: Debug APK derle
+        run: gradle --no-daemon :app:assembleDebug
+
+      - name: APK artifact yükle
+        uses: actions/upload-artifact@v4
+        with:
+          name: ZekaTR-debug-apk
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+
+      - name: Sürüm etiketi oluştur
+        id: tag
+        run: echo "tag=build-${{ github.run_number }}" >> "$GITHUB_OUTPUT"
+
+      - name: APK release oluştur
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          name: "ZekaTR — build ${{ github.run_number }}"
+          body: |
+            Bu APK GitHub Actions tarafından otomatik olarak derlendi.
+            `app-debug.apk` dosyasını Assets bölümünden indirebilirsin.
+          files: app/build/outputs/apk/debug/app-debug.apk
+          make_latest: true

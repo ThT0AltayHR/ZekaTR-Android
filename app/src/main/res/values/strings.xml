@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ZekaTR</string>
+    <string name="hint_message">Bir şeyler yaz…</string>
+    <string name="send">Gönder</string>
+    <string name="thinking">Düşünüyor…</string>
+    <string name="welcome_title">ZekaTR</string>
+    <string name="welcome_subtitle">Muhammed tarafından geliştirilen, tamamen cihazında çalışan yerel Türkçe yapay zeka.</string>
+</resources>
