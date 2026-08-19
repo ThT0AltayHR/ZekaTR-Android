@@ -193,7 +193,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private fun startVoiceInput() { val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply { putExtra(RecognizerIntent.EXTRA_LANGUAGE, "tr-TR"); putExtra(RecognizerIntent.EXTRA_PROMPT, "ZekaTR'ye konuş") }; runCatching { speechLauncher.launch(intent) }.onFailure { android.widget.Toast.makeText(this, "Bu cihazda sesli giriş kullanılamıyor.", android.widget.Toast.LENGTH_SHORT).show() } }
     override fun onInit(status: Int) { if (status == TextToSpeech.SUCCESS) tts.language = Locale("tr", "TR") }
     private fun addUserMessage(text: String) { adapter.addMessage(ChatMessage(ChatMessage.Type.USER, text)); scrollToBottom(); persistCurrentSession() }
-    private fun addAiMessage(text: String, fileName: String?, code: String?, animate: Boolean = true) { adapter.addMessage(ChatMessage(ChatMessage.Type.AI, text, fileName, code, animate)); scrollToBottom(); persistCurrentSession() }
+    private fun addAiMessage(text: String, fileName: String?, code: String?, animate: Boolean = true) { adapter.addMessage(ChatMessage(ChatMessage.Type.AI, text, fileName, code, animate = animate)); scrollToBottom(); persistCurrentSession() }
     private fun showThinking(label: String? = null) { adapter.addMessage(ChatMessage(ChatMessage.Type.THINKING, label ?: "")); scrollToBottom() }
     private fun scrollToBottom() { binding.recyclerMessages.post { if (messages.isNotEmpty()) binding.recyclerMessages.scrollToPosition(messages.size - 1) } }
     private fun persistCurrentSession() { if (messages.any { it.type == ChatMessage.Type.USER }) historyStore.save(sessionId, messages) }
