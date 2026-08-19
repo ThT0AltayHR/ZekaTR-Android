@@ -60,5 +60,12 @@
             android:fontFamily="monospace"
             android:textIsSelectable="true"
             android:visibility="gone" />
+
+        <!-- Link / YouTube onizleme karti buraya calisma zamaninda eklenir (bkz. ChatAdapter) -->
+        <FrameLayout
+            android:id="@+id/previewContainer"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
     </LinearLayout>
 </LinearLayout>

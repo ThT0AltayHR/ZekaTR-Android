@@ -1,31 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+        GUNCEL DURUM (durustce belirtiyoruz):
+        Bu surumden itibaren uygulama artik TAMAMEN offline degildir.
+        Asagidaki izinler, kullanicinin Ayarlar'dan ACIKCA actigi
+        opt-in ozellikler icin gereklidir:
+          - Web Arama (Brain -> WebSearchHelper)
+          - Link / YouTube onizleme kartlari
+          - Periyodik (~15 dk, surekli DEGIL) arka plan ogrenme
+          - Google ile Giris
+        Sohbet motorunun kendisi (Brain.kt kural tabanli mantigi) hala
+        tamamen yerel calisir ve hicbir mesaji disari gondermez.
+    -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/zekatr_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher"
+        android:roundIcon="@drawable/zekatr_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.ZekaTR"
         android:usesCleartextTraffic="false">
 
-        <!--
-            ONEMLI: Bu uygulama internet iznine SAHIP DEGILDIR.
-            Tum yapay zeka mantigi (Brain.kt) cihaz uzerinde, tamamen yerel calisir.
-            Hicbir sunucuya, API'ye veya bulut servisine baglanmaz.
-        -->
-
         <activity
-            android:name=".MainActivity"
+            android:name=".OnboardingActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.ZekaTR">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".PermissionActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ZekaTR" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/Theme.ZekaTR" />
+
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ZekaTR" />
+
+        <activity
+            android:name=".ChatHistoryActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ZekaTR" />
+
+        <service
+            android:name=".SelfImprovementService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+
+        <receiver
+            android:name=".BootReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge" />
     </application>
 
 </manifest>

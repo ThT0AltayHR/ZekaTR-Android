@@ -23,9 +23,13 @@ import java.util.Locale
 class Brain(context: Context) {
 
     private val memory = LearnedData(context.applicationContext)
+    private val prefs = Prefs(context.applicationContext)
     private val trLocale = Locale.forLanguageTag("tr-TR")
 
     private var awaitingTeachFor: String? = null
+
+    /** Cevap kaynagini MainActivity'nin UI/animasyon katmanina bildirmek icin. */
+    enum class AnswerSource { LOCAL_PATTERN, EMERGENCY, LEARNED, LEARNING_MODE, NEEDS_WEB_SEARCH, SAFETY }
 
     private fun normalize(text: String): String {
         return text.lowercase(trLocale)
@@ -158,10 +162,29 @@ class Brain(context: Context) {
      * Donen Triple: (cevap metni, dosya adi varsa, kod varsa)
      */
     fun respond(userInput: String): Triple<String, String?, String?> {
+        val full = process(userInput)
+        return Triple(full.text, full.fileName, full.code)
+    }
+
+    data class Answer(
+        val text: String,
+        val fileName: String? = null,
+        val code: String? = null,
+        val source: AnswerSource = AnswerSource.LOCAL_PATTERN,
+        /** source == NEEDS_WEB_SEARCH oldugunda, MainActivity bu sorguyla arama yapar. */
+        val searchQuery: String? = null
+    )
+
+    /**
+     * Zengin surum: cevabin nereden geldigini de dondurur, boylece UI katmani
+     * "yerel cevap / hafizadan / internetten arastirildi" seklinde durust bir
+     * gosterge sunabilir - kullaniciyi yaniltmayan bir "dusunme" akisi icin.
+     */
+    fun process(userInput: String): Answer {
         val trimmedInput = userInput.trim()
 
         // 1) Guvenlik katmani her seyden once calisir
-        SecurityFilter.check(trimmedInput)?.let { return Triple(it, null, null) }
+        SecurityFilter.check(trimmedInput)?.let { return Answer(it, source = AnswerSource.SAFETY) }
 
         // 2) Ogretme modu bekleniyorsa, bu mesaji cevap olarak kaydet
         awaitingTeachFor?.let { question ->
@@ -170,7 +193,20 @@ class Brain(context: Context) {
             if (keywords.isNotEmpty()) {
                 keywords.forEach { memory.teach(it, trimmedInput) }
             }
-            return Triple("Teşekkürler, bunu öğrendim! Artık bunu hatırlayacağım.", null, null)
+            return Answer("Teşekkürler, bunu öğrendim! Artık bunu hatırlayacağım.", source = AnswerSource.LEARNED)
+        }
+
+        // 2b) Resmi acil durum numarasi sorusu mu? Bu SABIT veriden gelir, asla tahmin edilmez.
+        val normalizedForEmergency = normalize(trimmedInput)
+        EmergencyContacts.findFor(normalizedForEmergency)?.let { entry ->
+            return Answer(
+                "${entry.name}: ${entry.number}\n\nBu numara sabit/resmi kayıttan geldi, tahmini değildir. " +
+                        "Gerçek bir acil durumdaysan lütfen doğrudan ${entry.number} numarasını ara.",
+                source = AnswerSource.EMERGENCY
+            )
+        }
+        if (normalizedForEmergency.contains("acil numaralar") || normalizedForEmergency.contains("tüm acil numaralar")) {
+            return Answer(EmergencyContacts.listAllAsText(), source = AnswerSource.EMERGENCY)
         }
 
         // 3) Kullanici acikca ogretmek istiyorsa: "öğret: soru -> cevap"
@@ -181,17 +217,17 @@ class Brain(context: Context) {
                 val cevap = parts[1].trim()
                 val keywords = soru.split(" ").filter { it.length > 2 }
                 keywords.forEach { memory.teach(it, cevap) }
-                return Triple("Anladım, bunu öğrendim. Bundan sonra bu şekilde cevap vereceğim.", null, null)
+                return Answer("Anladım, bunu öğrendim. Bundan sonra bu şekilde cevap vereceğim.", source = AnswerSource.LEARNED)
             }
         }
 
         // 4) Kod uretme istegi mi? (Python odakli genis kutuphane)
         CodeGenerator.tryGenerate(trimmedInput)?.let { result ->
-            return Triple(result.explanation, result.fileName, result.code)
+            return Answer(result.explanation, result.fileName, result.code, AnswerSource.LOCAL_PATTERN)
         }
 
         // 5) Matematik ifadesi mi?
-        MathHelper.tryEvaluate(trimmedInput)?.let { return Triple(it, null, null) }
+        MathHelper.tryEvaluate(trimmedInput)?.let { return Answer(it, source = AnswerSource.LOCAL_PATTERN) }
 
         val normalized = normalize(trimmedInput)
         val words = normalized.split(" ").filter { it.isNotBlank() }
@@ -209,19 +245,40 @@ class Brain(context: Context) {
         if (bestKeywords != null && bestScore > 0) {
             val idx = patterns.indexOfFirst { it.first == bestKeywords }
             val response = patterns[idx].second.random()
-            return Triple(resolveSpecialToken(response), null, null)
+            return Answer(resolveSpecialToken(response), source = AnswerSource.LOCAL_PATTERN)
         }
 
         // 7) Daha once ogrenilmis bir cevap var mi?
-        memory.findAnswer(words)?.let { return Triple(it, null, null) }
+        memory.findAnswer(words)?.let { return Answer(it, source = AnswerSource.LEARNED) }
 
-        // 8) Hicbir sey bulunamadi -> ogrenme moduna gec
+        // 8) Yerelde hicbir sey bulunamadi.
+        //    Web arama kullanici tarafindan ACIKCA acildiysa (Ayarlar), MainActivity'ye
+        //    "bunu internette ara" sinyali gonder. Kapaliysa eskisi gibi ogrenme moduna gec.
+        if (prefs.webSearchEnabled && looksLikeQuestion(normalized)) {
+            return Answer(
+                text = "",
+                source = AnswerSource.NEEDS_WEB_SEARCH,
+                searchQuery = trimmedInput
+            )
+        }
+
         awaitingTeachFor = trimmedInput
-        return Triple(
-            "Bunu henüz bilmiyorum. Bana ne cevap vermemi istersin? Yazdığın cevabı hatırlayacağım.",
-            null,
-            null
+        return Answer(
+            "Bunu henüz bilmiyorum. Bana ne cevap vermemi istersin? Yazdığın cevabı hatırlayacağım." +
+                    if (!prefs.webSearchEnabled) " (İstersen Ayarlar'dan Web Araması'nı açarsan, bilmediğim şeyleri internetten aramayı deneyebilirim.)" else "",
+            source = AnswerSource.LEARNING_MODE
         )
+    }
+
+    private fun looksLikeQuestion(normalized: String): Boolean {
+        val questionWords = listOf("nedir", "kimdir", "ne zaman", "nerede", "nasıl", "kaç", "neden", "niçin", "mi", "mı", "mu", "mü")
+        return questionWords.any { normalized.contains(it) } || normalized.trim().endsWith("?")
+    }
+
+    /** WEB'DEN bir cevap geldiginde bunu ogrenilmis veri olarak da kaydeder ki bir dahaki sefere yerelden bulunsun. */
+    fun rememberWebResult(query: String, answerText: String) {
+        val keywords = normalize(query).split(" ").filter { it.length > 2 }
+        keywords.forEach { memory.teach(it, answerText) }
     }
 
     /** __REALTIME__ gibi ozel isaretleri gercek deger uretecek fonksiyonlara baglar. */
