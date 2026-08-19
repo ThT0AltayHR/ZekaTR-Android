@@ -3,6 +3,7 @@ package com.muhammed.zekatr
 import android.content.Context
 import android.util.Base64
 import org.json.JSONArray
+import org.json.JSONObject
 import java.nio.charset.StandardCharsets
 import java.security.KeyStore
 import javax.crypto.Cipher
