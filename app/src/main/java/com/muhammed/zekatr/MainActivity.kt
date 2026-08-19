@@ -154,12 +154,8 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             handler.post {
                 adapter.removeLastIfThinking()
                 val text = if (report.sources.isEmpty()) "Deep Research için güvenilir sonuç alınamadı. İnternet bağlantısını kontrol et." else buildString {
-                    append("🧠 Deep Research
-
-")
-                    append("${report.sources.size} kaynak tarandı. Kaynaklar karşılaştırılarak aşağıdaki bulgular toplandı:
-
-")
+                    append("🧠 Deep Research\n\n")
+                    append("${report.sources.size} kaynak tarandı. Kaynaklar karşılaştırılarak aşağıdaki bulgular toplandı:\n\n")
                     report.sources.forEachIndexed { i, r -> append("${i + 1}. ${r.title}\n${r.summary.take(700)}\n${r.sourceUrl ?: ""}\n\n") }
                 }
                 deliverAnswer(text, null, null, query)
