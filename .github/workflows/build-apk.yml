@@ -33,7 +33,9 @@ jobs:
       - name: APK adını uygulama adına göre ayarla
         run: |
           mkdir -p dist
-          cp app/build/outputs/apk/release/app-release.apk dist/ZekaTR.apk
+          apk_path=$(find app/build/outputs/apk/release -maxdepth 1 -type f -name '*.apk' -print -quit)
+          test -n "$apk_path"
+          cp "$apk_path" dist/ZekaTR.apk
           test -s dist/ZekaTR.apk
 
       - name: Release APK artifact yükle
