@@ -103,7 +103,7 @@ class SecretVault(context: Context) {
             val o = org.json.JSONObject()
             o.put("name", name)
             o.put("created", meta.first)
-            if (meta.second != null) o.put("used", meta.second) else o.put("used", JSONArray.NULL)
+            if (meta.second != null) o.put("used", meta.second) else o.put("used", JSONObject.NULL)
             arr.put(o)
         }
         sp.edit().putString(indexKey, arr.toString()).apply()
