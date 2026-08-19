@@ -169,11 +169,23 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/divider"
-                android:layout_marginBottom="16dp" />
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" android:layout_marginBottom="16dp" />
+
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="AI Modeli" android:textColor="@color/text_secondary" android:textSize="12sp" android:layout_marginBottom="6dp" />
+            <Spinner android:id="@+id/spinnerProvider" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="10dp" />
+            <EditText android:id="@+id/editModelName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Model adı" android:background="@drawable/bg_input" android:padding="12dp" android:textColor="@color/text_primary" android:layout_marginBottom="10dp" />
+            <EditText android:id="@+id/editModelKey" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="API anahtarı (cihazda şifreli saklanır)" android:inputType="textPassword" android:background="@drawable/bg_input" android:padding="12dp" android:textColor="@color/text_primary" android:layout_marginBottom="10dp" />
+            <androidx.appcompat.widget.SwitchCompat android:id="@+id/switchModel" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Seçili AI modelini kullan" android:textColor="@color/text_primary" android:layout_marginBottom="20dp" />
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="16dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Konum + hava durumu" android:textColor="@color/text_primary" android:textSize="15sp" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Hava değiştiğinde ve önemli koşullarda bildirim gönderir." android:textColor="@color/text_secondary" android:textSize="12sp" />
+                </LinearLayout>
+                <androidx.appcompat.widget.SwitchCompat android:id="@+id/switchLocation" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <Button android:id="@+id/buttonTraining" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="🧠 Eğitim Merkezi" android:textAllCaps="false" android:background="@drawable/bg_input" android:textColor="@color/text_primary" android:gravity="start|center_vertical" android:padding="14dp" android:layout_marginBottom="20dp" />
 
             <!-- Google hesabi -->
             <TextView

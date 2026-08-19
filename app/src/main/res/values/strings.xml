@@ -45,7 +45,7 @@
     <string name="settings_sign_out">Çıkış Yap</string>
     <string name="settings_clear_memory">Hafızayı Temizle</string>
     <string name="settings_emergency_numbers">Acil Durum Numaraları</string>
-    <string name="settings_about">ZekaTR — Muhammed tarafından geliştirildi. Sohbet motoru cihazda çalışır; web araması, önizlemeler, arka plan öğrenme ve Google girişi yalnızca açıkça etkinleştirdiğinde internet kullanır.</string>
+    <string name="settings_about">ZekaTR — kişisel AI asistanı. Model yönlendirme, streaming, yerel hafıza, web araştırması, dosya analizi, sesli kullanım, cihaz araçları ve bildirim servislerini tek bir Android deneyiminde birleştirir.</string>
 
     <!-- Chat history -->
     <string name="history_title">Sohbetler</string>

@@ -13,6 +13,8 @@ object NotificationHelper {
 
     const val CHANNEL_ID_SETUP = "zekatr_setup"
     const val CHANNEL_ID_SERVICE = "zekatr_service"
+    const val CHANNEL_ID_WEATHER = "zekatr_weather"
+    const val CHANNEL_ID_NEWS = "zekatr_news"
     private const val NOTIF_ID_SETUP = 1001
 
     fun createChannels(context: Context) {
@@ -29,6 +31,22 @@ object NotificationHelper {
 
         manager.createNotificationChannel(setupChannel)
         manager.createNotificationChannel(serviceChannel)
+        manager.createNotificationChannel(NotificationChannel(CHANNEL_ID_WEATHER, "Hava Durumu", NotificationManager.IMPORTANCE_DEFAULT))
+        manager.createNotificationChannel(NotificationChannel(CHANNEL_ID_NEWS, "Son Dakika Haberleri", NotificationManager.IMPORTANCE_DEFAULT))
+    }
+
+    fun showWeather(context: Context, text: String) = showSimple(context, CHANNEL_ID_WEATHER, 4101, "🌤️ ZekaTR Hava Durumu", text)
+    fun showNews(context: Context, text: String) = showSimple(context, CHANNEL_ID_NEWS, 4102, "📰 ZekaTR Haber", text)
+    fun showSpecial(context: Context, text: String) = showSimple(context, CHANNEL_ID_NEWS, 4103, "🎉 ZekaTR Özel Gün", text)
+
+    private fun showSimple(context: Context, channel: String, id: Int, title: String, text: String) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            androidx.core.content.ContextCompat.checkSelfPermission(context, PermissionsHelper.NOTIFICATION_PERMISSION) != android.content.pm.PackageManager.PERMISSION_GRANTED) return
+        val intent = PendingIntent.getActivity(context, id, Intent(context, MainActivity::class.java), PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+        val notification = NotificationCompat.Builder(context, channel)
+            .setSmallIcon(R.drawable.ic_logo).setContentTitle(title).setContentText(text)
+            .setStyle(NotificationCompat.BigTextStyle().bigText(text)).setContentIntent(intent).setAutoCancel(true).setPriority(NotificationCompat.PRIORITY_DEFAULT).build()
+        NotificationManagerCompat.from(context).notify(id, notification)
     }
 
     /**

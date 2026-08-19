@@ -21,6 +21,14 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <queries>
+        <intent><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent>
+    </queries>
 
     <application
         android:allowBackup="true"
@@ -50,6 +58,16 @@
             android:name=".MainActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize"
+            android:theme="@style/Theme.ZekaTR" />
+
+        <activity
+            android:name=".ImageGenerationActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ZekaTR" />
+
+        <activity
+            android:name=".TrainingActivity"
+            android:exported="false"
             android:theme="@style/Theme.ZekaTR" />
 
         <activity

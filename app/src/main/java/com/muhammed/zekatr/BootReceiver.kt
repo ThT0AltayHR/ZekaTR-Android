@@ -10,6 +10,7 @@ class BootReceiver : BroadcastReceiver() {
         val prefs = Prefs(context)
         if (prefs.backgroundRefreshEnabled) {
             BackgroundRefreshWorker.schedule(context)
+            WeatherNewsWorker.schedule(context)
             SelfImprovementService.start(context)
         }
     }

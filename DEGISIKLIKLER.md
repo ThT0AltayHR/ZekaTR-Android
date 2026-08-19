@@ -18,3 +18,14 @@
 2. **Google Client ID'nin geçerliliği** — Kod tarafı tamamen hazır ve gerçek; sadece bu ID'nin senin Google Cloud Console projenle (paket adı + imzalama SHA-1) eşleştiğini ben doğrulayamam.
 
 Geri kalan her şey — arayüz, menü, geçmiş, ayarlar, önizlemeler, izin ekranı — tam istediğin gibi ve çalışır durumda koduyla teslim edildi.
+
+## 2.0.1 — Görsel Atölyesi
+- Provider tabanlı görsel üretim katmanı eklendi: OpenAI Images ve Gemini Imagen.
+- Prompt ile yeni görsel üretme.
+- OpenAI üzerinden seçilen görseli prompt ile düzenleme.
+- 1:1, yatay ve dikey çıktı seçenekleri; kalite seçimi.
+- Görsel önizleme, güvenli hata mesajları ve Galeri/ZekaTR klasörüne kayıt.
+- Drawer menüsüne Görsel Atölyesi ekranı eklendi.
+- Ağ zaman aşımı ve HTTP 400/401/403/429/5xx hataları kullanıcı dostu mesajlara dönüştürüldü.
+
+Not: APK içine devasa bir diffusion modeli gömmek yerine sağlayıcı tabanlı mimari kullanılır. Böylece APK gereksiz yere şişmez; gerçek üretim sağlayıcının güncel model kapasitesini kullanır. 4K çıktının gerçek ayrıntı kalitesi sağlayıcı/model tarafından belirlenir; uygulama 4K etiketiyle sahte bir kalite garantisi vermez.
