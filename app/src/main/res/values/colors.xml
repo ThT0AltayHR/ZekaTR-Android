@@ -8,4 +8,8 @@
     <color name="accent_dark">#5048A6</color>
     <color name="danger">#D94A4A</color>
     <color name="white">#FFFFFF</color>
+    <color name="bg_bubble_ai">#F1F0FA</color>
+    <color name="bg_bubble_user">#E6E3FF</color>
+    <color name="code_bg">#20232A</color>
+    <color name="code_text">#E9EDF2</color>
 </resources>
