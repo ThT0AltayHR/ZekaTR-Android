@@ -22,6 +22,7 @@
 
         <TextView
             android:id="@+id/textAiMessage"
+            android:fontFamily="@font/inter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_bubble_ai"
@@ -45,6 +46,41 @@
             android:textSize="13sp"
             android:visibility="gone"
             android:fontFamily="monospace" />
+
+        <!-- Dosya indirme karti -->
+        <LinearLayout
+            android:id="@+id/downloadCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_code_block"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="8dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textDownloadFileName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btnDownloadFile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:paddingHorizontal="14dp"
+                android:text="⬇ İndir"
+                android:textAllCaps="false"
+                android:textSize="12sp" />
+        </LinearLayout>
 
         <!-- Kod blogu -->
         <TextView

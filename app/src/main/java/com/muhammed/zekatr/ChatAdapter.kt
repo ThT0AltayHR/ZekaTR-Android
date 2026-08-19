@@ -72,6 +72,9 @@ class ChatAdapter(private val items: MutableList<ChatMessage>) :
         private val fileLabel: android.widget.TextView = itemView.findViewById(R.id.textFileCreating)
         private val codeBlock: android.widget.TextView = itemView.findViewById(R.id.textCodeBlock)
         private val previewContainer: android.widget.FrameLayout = itemView.findViewById(R.id.previewContainer)
+        private val downloadCard: android.widget.LinearLayout = itemView.findViewById(R.id.downloadCard)
+        private val downloadFileName: android.widget.TextView = itemView.findViewById(R.id.textDownloadFileName)
+        private val downloadBtn: android.widget.Button = itemView.findViewById(R.id.btnDownloadFile)
 
         fun bind(msg: ChatMessage) {
             TypingAnimator.cancel(text)
@@ -92,6 +95,21 @@ class ChatAdapter(private val items: MutableList<ChatMessage>) :
                 codeBlock.text = msg.code
             } else {
                 codeBlock.visibility = android.view.View.GONE
+            }
+
+            if (msg.code != null && msg.fileName != null) {
+                downloadCard.visibility = android.view.View.VISIBLE
+                downloadFileName.text = msg.fileName
+                downloadBtn.setOnClickListener {
+                    val uri = FileDownloadHelper.saveToDownloads(itemView.context, msg.fileName!!, msg.code!!)
+                    if (uri != null) {
+                        android.widget.Toast.makeText(itemView.context, "✓ İndirilenler/ZekaTR klasörüne kaydedildi: ${msg.fileName}", android.widget.Toast.LENGTH_LONG).show()
+                    } else {
+                        android.widget.Toast.makeText(itemView.context, "İndirme başarısız oldu.", android.widget.Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } else {
+                downloadCard.visibility = android.view.View.GONE
             }
 
             previewContainer.removeAllViews()

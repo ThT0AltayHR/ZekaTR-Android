@@ -80,6 +80,37 @@
             android:exported="false"
             android:theme="@style/Theme.ZekaTR" />
 
+        <activity
+            android:name=".TerminalActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/Theme.ZekaTR" />
+
+        <activity
+            android:name=".VaultManagementActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ZekaTR" />
+
+        <activity
+            android:name=".MemoryManagementActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ZekaTR" />
+
+        <activity
+            android:name=".WeatherActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ZekaTR" />
+
+        <activity
+            android:name=".NewsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ZekaTR" />
+
+        <activity
+            android:name=".YouTubePlayerActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ZekaTR" />
+
         <service
             android:name=".SelfImprovementService"
             android:exported="false"

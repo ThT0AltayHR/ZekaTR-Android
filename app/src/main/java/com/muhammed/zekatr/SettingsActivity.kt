@@ -74,6 +74,12 @@ class SettingsActivity : AppCompatActivity() {
             if (checked) { WeatherNewsWorker.schedule(this); requestLocation() }
         }
         binding.buttonTraining.setOnClickListener { startActivity(Intent(this, TrainingActivity::class.java)) }
+        binding.buttonWeather.setOnClickListener { startActivity(Intent(this, WeatherActivity::class.java)) }
+        binding.buttonNews.setOnClickListener { startActivity(Intent(this, NewsActivity::class.java)) }
+        binding.buttonLocalModel.setOnClickListener { showLocalModelPicker() }
+        binding.buttonTerminal.setOnClickListener { startActivity(Intent(this, TerminalActivity::class.java)) }
+        binding.buttonVault.setOnClickListener { startActivity(Intent(this, VaultManagementActivity::class.java)) }
+        binding.buttonMemoryManagement.setOnClickListener { startActivity(Intent(this, MemoryManagementActivity::class.java)) }
 
         binding.switchWebSearch.isChecked = prefs.webSearchEnabled
         binding.switchWebSearch.setOnCheckedChangeListener { _, checked -> prefs.webSearchEnabled = checked }
@@ -126,6 +132,29 @@ class SettingsActivity : AppCompatActivity() {
         if (androidx.core.content.ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != android.content.pm.PackageManager.PERMISSION_GRANTED) {
             locationLauncher.launch(android.Manifest.permission.ACCESS_COARSE_LOCATION)
         }
+    }
+
+    /** Klasordeki birden fazla GGUF dosyasi arasindan (agir/hafif) secim yapabilme. */
+    private fun showLocalModelPicker() {
+        val models = ModelPaths.listGgufModels(this)
+        if (models.isEmpty()) {
+            AlertDialog.Builder(this)
+                .setTitle("Yerel model bulunamadı")
+                .setMessage("Modeli şu klasöre kopyaladığından emin ol:\n${ModelPaths.ggufDir(this).absolutePath}\n\nBirden fazla .gguf dosyası koyarsan (örn. daha hafif bir Qwen sürümü), aralarında burada seçim yapabilirsin.")
+                .setPositiveButton("Tamam", null)
+                .show()
+            return
+        }
+        val active = ModelPaths.activeModelFileName(this)
+        val labels = models.map { "${it.name}\n${ModelPaths.sizeCategoryLabel(it)}${if (it.name == active) "  ✓ Aktif" else ""}" }.toTypedArray()
+        AlertDialog.Builder(this)
+            .setTitle("Yerel Model Seç")
+            .setItems(labels) { _, which ->
+                ModelPaths.setActiveModel(this, models[which].name)
+                android.widget.Toast.makeText(this, "Aktif model: ${models[which].name}", android.widget.Toast.LENGTH_SHORT).show()
+            }
+            .setNegativeButton("Kapat", null)
+            .show()
     }
 
     override fun onPause() {

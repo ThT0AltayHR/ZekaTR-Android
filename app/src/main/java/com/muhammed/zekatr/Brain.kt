@@ -23,6 +23,7 @@ import java.util.Locale
 class Brain(context: Context) {
 
     private val memory = LearnedData(context.applicationContext)
+    private val memoryManager = MemoryManager(context.applicationContext)
     private val prefs = Prefs(context.applicationContext)
     private val trLocale = Locale.forLanguageTag("tr-TR")
 
@@ -185,6 +186,15 @@ class Brain(context: Context) {
 
         // 1) Guvenlik katmani her seyden once calisir
         SecurityFilter.check(trimmedInput)?.let { return Answer(it, source = AnswerSource.SAFETY) }
+
+        // 1b) Kullanici acikca "belleğe kaydet / bunu hatırla / unutma" dediyse manuel bellek kaydi
+        if (memoryManager.isManualSaveCommand(trimmedInput)) {
+            val item = memoryManager.rememberManual(trimmedInput)
+            return Answer(
+                "🗂️ Kaydettim: \"${item.text}\"\nBunu Ayarlar > Bellek Yönetimi ekranından istediğin zaman görüp silebilirsin.",
+                source = AnswerSource.LEARNED
+            )
+        }
 
         // 2) Ogretme modu bekleniyorsa, bu mesaji cevap olarak kaydet
         awaitingTeachFor?.let { question ->

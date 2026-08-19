@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private lateinit var prefs: Prefs
     private lateinit var historyStore: ChatHistoryStore
     private lateinit var modelRouter: ModelRouter
+    private lateinit var terminalService: TerminalService
+    private lateinit var selfTestRunner: SelfTestRunner
     private lateinit var tts: TextToSpeech
     private val messages = mutableListOf<ChatMessage>()
     private lateinit var adapter: ChatAdapter
@@ -55,6 +57,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         brain = Brain(this); prefs = Prefs(this); historyStore = ChatHistoryStore(this); modelRouter = ModelRouter(this); tts = TextToSpeech(this, this)
+        terminalService = TerminalService(this); selfTestRunner = SelfTestRunner(terminalService)
         sessionId = prefs.activeSessionId
         adapter = ChatAdapter(messages)
         binding.recyclerMessages.layoutManager = LinearLayoutManager(this)
@@ -130,7 +133,10 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private fun handleModel(userText: String) {
         showThinking("${prefs.modelProvider.label} düşünüyor…")
         val history = messages.filter { it.type == ChatMessage.Type.USER || it.type == ChatMessage.Type.AI }.takeLast(12).map { ModelRouter.Message(if (it.type == ChatMessage.Type.USER) "user" else "assistant", it.text) }
-        val system = ModelRouter.Message("system", "Sen ZekaTR'sin. Türkçe konuş. Kullanıcıya doğrudan yardımcı ol. Kaynakları ham biçimde yapıştırma; bulguları birleştir ve kısa, anlaşılır sonuç üret. Bilmediğini dürüstçe belirt ama web veya yerel araçla doğrulama fırsatını değerlendir. Güvenlik kurallarını aşma.")
+        val system = ModelRouter.Message("system", "Sen ZekaTR'sin. Her zaman düzgün ve akıcı Türkçe konuş. Kullanıcıya doğrudan yardımcı ol. Kaynakları ham biçimde yapıştırma; bulguları birleştir ve kısa, anlaşılır sonuç üret. Bilmediğini dürüstçe belirt ama web veya yerel araçla doğrulama fırsatını değerlendir. " +
+            "Cihazda gerçek bir terminale (bash, python3, git, pip) erişimin var (TerminalService) — kullanıcı bir kod projesi istediğinde, kodu ürettikten sonra terminalde birkaç kez çalıştırıp gerçekten hatasız çalıştığını doğrula, sonucu kullanıcıya dürüstçe raporla. " +
+            "Token/parola gibi gizli bilgiler için şifreli bir kasan var (SecretVault) — kullanıcıdan token istediğinde asla düz metin olarak sohbette isteme, 'Güvenli Kasa' ekranından eklemesini söyle; kayıtlı bir secret'ı kullanırken değeri asla ekrana yazdırma. " +
+            "Kullanıcı 'belleğe kaydet' derse veya kalıcı olması gereken bir bilgi paylaşırsa bunu belirt, Bellek Yönetimi ekranından silinebileceğini hatırlat. Güvenlik kurallarını aşma.")
         val all = listOf(system) + history + ModelRouter.Message("user", userText)
         modelRouter.stream(all, onDelta = { delta -> handler.post { updateStreaming(delta) } }, onDone = { full -> handler.post { finishStreaming(full) } }, onError = { error -> handler.post { finishStreaming("$error\n\nYerel ZekaTR motoruna geri döndüm. Ayarlar'dan başka bir sağlayıcı seçebilirsin.") } })
     }
@@ -186,7 +192,36 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             else LinkPreviewHelper.fetchPreview(url)?.let { lp -> handler.post { msg.linkPreview = lp; adapter.notifyItemChanged(messages.indexOf(msg)) } }
         }
         persistCurrentSession()
+        // Python kodu uretildiyse ve terminal hazirsa: gercek adimlarla otomatik dogrulama.
+        if (code != null && fileName != null && fileName.endsWith(".py") && terminalService.isReady()) {
+            runSelfTestWithRealSteps(msg, fileName, code)
+        }
     }
+
+    /**
+     * "Thinking / working" balonunu SAHTE bir animasyon olarak degil, TerminalService
+     * uzerinde GERCEKTEN calisan adimlarin etiketleri olarak gunceller (dosya yazma,
+     * calistirma, 4 kez dogrulama). Sonuc dogrudan mesaja eklenir.
+     */
+    private fun runSelfTestWithRealSteps(msg: ChatMessage, fileName: String, code: String) {
+        showThinking("📝 $fileName yazılıyor…")
+        ioExecutor.execute {
+            val projectDir = java.io.File(cacheDir, "self_test_${System.currentTimeMillis()}").apply { mkdirs() }
+            java.io.File(projectDir, fileName).writeText(code)
+            handler.post { adapter.removeLastIfThinking(); showThinking("▶️ Terminalde çalıştırılıyor (4 deneme)…") }
+            val report = selfTestRunner.verify(projectDir, "python3 '$fileName'", attempts = 4)
+            handler.post {
+                adapter.removeLastIfThinking()
+                val idx = messages.indexOf(msg)
+                if (idx >= 0) {
+                    msg.text = msg.text + "\n\n" + selfTestRunner.summarize(report)
+                    adapter.notifyItemChanged(idx)
+                    persistCurrentSession()
+                }
+            }
+        }
+    }
+
 
     private fun showAndSpeak(text: String) { addAiMessage(text, null, null, true); speak(text) }
     private fun speak(text: String) { if (::tts.isInitialized) tts.speak(text.take(3000), TextToSpeech.QUEUE_FLUSH, null, "zekatr") }
