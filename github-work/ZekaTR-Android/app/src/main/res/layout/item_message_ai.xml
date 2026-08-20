@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="top"
+    android:paddingVertical="4dp">
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="6dp"
+        android:src="@drawable/ic_logo"
+        android:contentDescription="@string/app_name" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginEnd="40dp">
+
+        <TextView
+            android:id="@+id/textAiMessage"
+            android:fontFamily="@font/inter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_bubble_ai"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="10dp"
+            android:textColor="@color/text_primary"
+            android:textSize="15sp"
+            android:textIsSelectable="true" />
+
+        <!-- Dosya olusturma satiri: "Creating dosyaadi.uzanti" -->
+        <TextView
+            android:id="@+id/textFileCreating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="8dp"
+            android:background="@drawable/bg_code_block"
+            android:textColor="@color/accent"
+            android:textStyle="italic"
+            android:textSize="13sp"
+            android:visibility="gone"
+            android:fontFamily="monospace" />
+
+        <!-- Dosya indirme karti -->
+        <LinearLayout
+            android:id="@+id/downloadCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_code_block"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="8dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textDownloadFileName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btnDownloadFile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:paddingHorizontal="14dp"
+                android:text="⬇ İndir"
+                android:textAllCaps="false"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Kod blogu -->
+        <TextView
+            android:id="@+id/textCodeBlock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="10dp"
+            android:background="@drawable/bg_code_block"
+            android:textColor="@color/code_text"
+            android:textSize="13sp"
+            android:fontFamily="monospace"
+            android:textIsSelectable="true"
+            android:visibility="gone" />
+
+        <!-- Link / YouTube onizleme karti buraya calisma zamaninda eklenir (bkz. ChatAdapter) -->
+        <FrameLayout
+            android:id="@+id/previewContainer"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+</LinearLayout>

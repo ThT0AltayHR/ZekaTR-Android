@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Google Fonts "Downloadable Fonts" mekanizmasi: TTF dosyasini APK icine
+  gommuyoruz (dosya boyutu/lisans karmasasindan kaçınmak icin), cihaz
+  Google Play Services uzerinden ilk kullanimda Google'in kendi font
+  sunucusundan indirip yerel olarak onbelleğe alıyor. İnternet yoksa
+  sistem otomatik olarak varsayılan fonta düşer (crash olmaz).
+
+  "Claude'un fontu" telif hakli/ozel bir font oldugu icin birebir
+  kopyalanamaz; bunun yerine benzer, acik/kullanima serbest bir
+  "humanist sans" olan Inter secildi - modern AI arayuzlerinde
+  yaygin kullanilan, okunakli bir font ailesi.
+-->
+<font-family xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:fontProviderAuthority="com.google.android.gms.fonts"
+    app:fontProviderPackage="com.google.android.gms"
+    app:fontProviderQuery="Inter"
+    app:fontProviderCerts="@array/com_google_android_gms_fonts_certs">
+</font-family>

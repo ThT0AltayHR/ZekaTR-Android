@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ZekaTR</string>
+    <string name="hint_message">Bir şeyler yaz…</string>
+    <string name="send">Gönder</string>
+    <string name="thinking">Düşünüyor…</string>
+    <string name="welcome_title">ZekaTR</string>
+    <string name="welcome_subtitle">Muhammed tarafından geliştirilen, tamamen cihazında çalışan yerel Türkçe yapay zeka.</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_welcome_title">ZekaTR\'ye Hoş Geldin</string>
+    <string name="onboarding_welcome_subtitle">Başlamadan önce seni tanıyalım.</string>
+    <string name="onboarding_name_question">Sana nasıl hitap etmemi istersin?</string>
+    <string name="onboarding_name_hint">Adın…</string>
+    <string name="onboarding_continue">Devam Et</string>
+    <string name="onboarding_skip">Şimdilik geç</string>
+
+    <!-- Permission screen -->
+    <string name="perm_title">Arka Planda Kesintisiz Çalışma</string>
+    <string name="perm_subtitle">ZekaTR, internet olduğu sürece arka planda periyodik olarak kendini güncellemeye çalışabilir. Bunun için aşağıdaki sistem izinlerini açman gerekiyor. Hiçbiri zorunlu değildir; istediğin an Ayarlar\'dan değiştirebilirsin.</string>
+    <string name="perm_battery_title">Pil Optimizasyonu Kısıtlamasını Kaldır</string>
+    <string name="perm_battery_desc">Açık olmazsa Android, pil tasarrufu için arka plan görevini zaman zaman erteler.</string>
+    <string name="perm_autostart_title">Otomatik Başlatmaya İzin Ver</string>
+    <string name="perm_autostart_desc">Bazı telefon markalarında (Xiaomi, Huawei, Oppo, Vivo, Samsung vb.) uygulamaların arka planda kalabilmesi için ayrıca bu ayarın açılması gerekir. Cihazına göre ilgili ekran açılır; bulunamazsa uygulama ayarlarına yönlendirilirsin.</string>
+    <string name="perm_notif_title">Bildirimlere İzin Ver</string>
+    <string name="perm_notif_desc">Arka planda çalışırken durumunu (bağlı / bağlantı bekleniyor) gösteren bir bildirim gerekir; Android bunu zorunlu tutar.</string>
+    <string name="perm_open_settings">Ayarlara Git</string>
+    <string name="perm_grant">İzin Ver</string>
+    <string name="perm_continue">Tamamlandı, Devam Et</string>
+    <string name="perm_skip">Şimdi değil, bu özelliği kapalı bırak</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Ayarlar</string>
+    <string name="settings_name">İsim</string>
+    <string name="settings_thinking_level">Düşünme Seviyesi</string>
+    <string name="settings_thinking_fast">Hızlı</string>
+    <string name="settings_thinking_normal">Normal</string>
+    <string name="settings_thinking_deep">Derin (analiz + izinliyse web araması)</string>
+    <string name="settings_web_search">Web Araması</string>
+    <string name="settings_web_search_desc">Bilmediği konularda internetten (opt-in) arama yapmasına izin ver</string>
+    <string name="settings_bg_refresh">Arka Planda Periyodik Öğrenme</string>
+    <string name="settings_bg_refresh_desc">Yaklaşık 15 dakikada bir, sistem izin verdiğinde küçük bir bilgi güncellemesi çeker. Sürekli/aralıksız değildir.</string>
+    <string name="settings_google_account">Google Hesabı</string>
+    <string name="settings_sign_in">Google ile Giriş Yap</string>
+    <string name="settings_sign_out">Çıkış Yap</string>
+    <string name="settings_clear_memory">Hafızayı Temizle</string>
+    <string name="settings_emergency_numbers">Acil Durum Numaraları</string>
+    <string name="settings_about">ZekaTR — kişisel AI asistanı. Model yönlendirme, streaming, yerel hafıza, web araştırması, dosya analizi, sesli kullanım, cihaz araçları ve bildirim servislerini tek bir Android deneyiminde birleştirir.</string>
+
+    <!-- Chat history -->
+    <string name="history_title">Sohbetler</string>
+    <string name="history_new_chat">Yeni Sohbet</string>
+    <string name="history_empty">Henüz kayıtlı sohbet yok.</string>
+    <string name="history_delete">Sil</string>
+
+    <!-- Content descriptions -->
+    <string name="link_preview_image_desc">Bağlantı önizleme görseli</string>
+    <string name="youtube_thumbnail_desc">YouTube video küçük resmi</string>
+    <string name="play_button_desc">Oynat</string>
+    <string name="youtube_badge">YouTube</string>
+    <string name="menu_desc">Menü</string>
+
+    <!-- Google Sign-In: kullanicinin sohbette paylastigi Client ID.
+         UYARI: Bu ID'nin senin Google Cloud Console projenle (paket adi + SHA-1)
+         eslesip eslesmedigini biz dogrulayamiyoruz - lutfen kontrol et. -->
+    <string name="default_web_client_id" translatable="false">580735958976-smda5qqsfrkl9i1bna4di9gacrs9263p.apps.googleusercontent.com</string>
+</resources>

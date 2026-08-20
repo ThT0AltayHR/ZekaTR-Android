@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#000000">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="14dp">
+
+        <ImageButton
+            android:id="@+id/btnBackYoutube"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:contentDescription="Geri" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="▶ YouTube Oynatıcı"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <WebView
+        android:id="@+id/webYoutubePlayer"
+        android:layout_width="match_parent"
+        android:layout_height="220dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textColor="#AAAAAA"
+        android:textSize="12sp"
+        android:text="Not: Bu, YouTube'un resmi oynatıcısıdır (reklamlar dahil). Ekran kapandığında oynatma durur — bu, YouTube'un kullanım şartlarına uygun kalmak için bilinçli bir sınırlamadır." />
+</LinearLayout>
