@@ -6,6 +6,7 @@
 
 #include <jni.h>
 #include <string>
+#include <vector>
 #include <android/log.h>
 #include "llama.h"
 
