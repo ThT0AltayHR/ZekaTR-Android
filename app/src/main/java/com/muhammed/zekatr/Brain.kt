@@ -262,9 +262,11 @@ class Brain(context: Context) {
         memory.findAnswer(words)?.let { return Answer(it, source = AnswerSource.LEARNED) }
 
         // 8) Yerelde hicbir sey bulunamadi.
-        //    Web arama kullanici tarafindan ACIKCA acildiysa (Ayarlar), MainActivity'ye
-        //    "bunu internette ara" sinyali gonder. Kapaliysa eskisi gibi ogrenme moduna gec.
-        if (prefs.webSearchEnabled && looksLikeQuestion(normalized)) {
+        //    webSearchEnabled ACIKSA (varsayilan artik ACIK), kullaniciya SORMADAN
+        //    MainActivity'ye "bunu internette ara" sinyali gonderilir; sonuc otomatik
+        //    ogrenilir (bkz. rememberWebResult). looksLikeQuestion kontrolu KALDIRILDI
+        //    ki soru isareti olmayan ("Fenerbahce'nin son maci" gibi) girdiler de aransin.
+        if (prefs.webSearchEnabled) {
             return Answer(
                 text = "",
                 source = AnswerSource.NEEDS_WEB_SEARCH,

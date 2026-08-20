@@ -13,6 +13,8 @@ class ModelRouter(context: Context) {
     private val appContext = context.applicationContext
     private val prefs = Prefs(appContext)
     private val secure = SecurePrefs(appContext)
+    private val localEngine by lazy { LocalLlmEngine(appContext) }
+    private var localLoadedFor: String? = null
     private val client = OkHttpClient.Builder()
         .connectTimeout(20, TimeUnit.SECONDS)
         .readTimeout(90, TimeUnit.SECONDS)
@@ -20,12 +22,14 @@ class ModelRouter(context: Context) {
         .build()
 
     enum class Provider(val label: String) {
-        OPENAI("OpenAI"), GROQ("Groq"), OPENROUTER("OpenRouter"), GEMINI("Gemini"), CLAUDE("Claude"), LOCAL("Yerel model")
+        OPENAI("OpenAI"), GROQ("Groq"), OPENROUTER("OpenRouter"), GEMINI("Gemini"), CLAUDE("Claude"), LOCAL("ZekaTR Thinking Model")
     }
 
     data class Message(val role: String, val content: String)
 
-    fun configured(): Boolean = prefs.modelProvider != Provider.LOCAL && !secure.get("model_api_key").isNullOrBlank()
+    fun configured(): Boolean =
+        if (prefs.modelProvider == Provider.LOCAL) ModelPaths.hasModel(appContext)
+        else !secure.get("model_api_key").isNullOrBlank()
 
     fun stream(messages: List<Message>, onDelta: (String) -> Unit, onDone: (String) -> Unit, onError: (String) -> Unit) {
         if (!configured()) { onError("Model sağlayıcısı yapılandırılmamış."); return }
@@ -36,12 +40,40 @@ class ModelRouter(context: Context) {
                     Provider.GEMINI -> callGemini(messages, onDone, onError)
                     Provider.CLAUDE -> callClaude(messages, onDone, onError)
                     Provider.OPENAI, Provider.GROQ, Provider.OPENROUTER -> callOpenAiCompatible(provider, messages, onDelta, onDone, onError)
-                    Provider.LOCAL -> onError("Yerel model yapılandırılmamış.")
+                    Provider.LOCAL -> callLocal(messages, onDelta, onDone, onError)
                 }
             } catch (e: Exception) {
                 onError(cleanError(e))
             }
         }.start()
+    }
+
+    /** ZekaTR Thinking Model (GGUF, cihaz uzerinde, internet gerektirmez). */
+    private fun callLocal(messages: List<Message>, onDelta: (String) -> Unit, onDone: (String) -> Unit, onError: (String) -> Unit) {
+        val active = ModelPaths.findActiveModel(appContext)
+        val file = active?.file
+        if (file == null) { onError("Yüklü bir GGUF model yok. Sohbet ekranındaki Model butonundan bir model seç veya ekle."); return }
+
+        val history = messages.filter { it.role != "system" }.dropLast(1).map { it }
+        val userMessage = messages.lastOrNull { it.role == "user" }?.content ?: ""
+
+        fun runGenerate() {
+            localEngine.generate(
+                history = history,
+                userMessage = userMessage,
+                onToken = { piece -> onDelta(piece) },
+                onDone = { full -> onDone(full) },
+                onError = { err -> onError(err) }
+            )
+        }
+
+        if (localLoadedFor == file.absolutePath) { runGenerate(); return }
+        localEngine.loadModel(file) { result ->
+            result.onSuccess {
+                localLoadedFor = file.absolutePath
+                runGenerate()
+            }.onFailure { e -> onError(e.message ?: "Yerel model yüklenemedi.") }
+        }
     }
 
     private fun callOpenAiCompatible(provider: Provider, messages: List<Message>, onDelta: (String) -> Unit, onDone: (String) -> Unit, onError: (String) -> Unit) {

@@ -45,6 +45,33 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
     }
 
+    /** Model Ekle: kullanıcı cihazından HERHANGİ bir .gguf dosyasını seçer (SAF).
+     *  Dosya "android/data" gibi kısıtlı/kaldırılabilir bir yere değil, doğrudan
+     *  uygulamanın kendi alanına (filesDir/ggufmodel/user) bir kez kopyalanır. */
+    private val ggufPicker = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+        uri ?: return@registerForActivityResult
+        val name = runCatching {
+            contentResolver.query(uri, null, null, null, null)?.use { c ->
+                val idx = c.getColumnIndex(android.provider.OpenableColumns.DISPLAY_NAME)
+                if (c.moveToFirst() && idx >= 0) c.getString(idx) else null
+            }
+        }.getOrNull() ?: "model_${System.currentTimeMillis()}.gguf"
+        ioExecutor.execute {
+            val imported = runCatching { ModelPaths.importUserModel(this, uri, name) }
+            handler.post {
+                imported.onSuccess { file ->
+                    ModelPaths.setActiveModel(this, file.name)
+                    prefs.modelProvider = ModelRouter.Provider.LOCAL
+                    prefs.modelEnabled = true
+                    updateModelStatus()
+                    android.widget.Toast.makeText(this, "Model eklendi ve aktif: ${file.name}", android.widget.Toast.LENGTH_LONG).show()
+                }.onFailure {
+                    android.widget.Toast.makeText(this, "Model eklenemedi: ${it.message}", android.widget.Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
     private val permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { }
     private val speechLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         val data = result.data ?: return@registerForActivityResult
@@ -62,11 +89,50 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         adapter = ChatAdapter(messages)
         binding.recyclerMessages.layoutManager = LinearLayoutManager(this)
         binding.recyclerMessages.adapter = adapter
+        ioExecutor.execute { ModelPaths.syncBundledModelsFromAssets(this) }
         setupDrawer(); loadSessionOrGreet(); updateModelStatus()
         binding.btnSend.setOnClickListener { onSendClicked() }
         binding.btnAttach.setOnClickListener { filePicker.launch(arrayOf("text/*", "application/pdf", "application/zip", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/octet-stream", "image/*")) }
         binding.btnVoice.setOnClickListener { startVoiceInput() }
+        binding.btnModel.setOnClickListener { showModelPicker() }
         requestOptionalPermissions()
+    }
+
+    /** Sohbet ekranındaki "Model" butonu: bundled + kullanıcı GGUF modelleri +
+     *  bulut sağlayıcılar (Ayarlar'da API anahtarı girilmişse) arasında tek
+     *  dokunuşla geçiş + "Model Ekle" (SAF ile cihazdan .gguf seçme). */
+    private fun showModelPicker() {
+        val local = ModelPaths.listAllModels(this)
+        val activeLocalName = ModelPaths.activeModelFileName(this)
+        val items = mutableListOf<String>()
+        val actions = mutableListOf<() -> Unit>()
+
+        local.forEach { entry ->
+            val f = entry.file ?: return@forEach
+            val tag = if (entry.isBundled) " (dahili)" else ""
+            val check = if (prefs.modelProvider == ModelRouter.Provider.LOCAL && f.name == activeLocalName) " ✓" else ""
+            items += "🧠 ${entry.displayName}$tag$check"
+            actions += {
+                ModelPaths.setActiveModel(this, f.name)
+                prefs.modelProvider = ModelRouter.Provider.LOCAL
+                prefs.modelEnabled = true
+                updateModelStatus()
+            }
+        }
+        if (modelRouter.configured() && prefs.modelProvider != ModelRouter.Provider.LOCAL) {
+            items += "☁️ ${prefs.modelProvider.label} (Ayarlar'da yapılandırılmış)"
+            actions += { updateModelStatus() }
+        }
+        items += "➕ Model Ekle (cihazdan .gguf seç)"
+        actions += { ggufPicker.launch(arrayOf("*/*")) }
+        items += "⚙️ Diğer sağlayıcılar (OpenAI/Gemini/Claude…) — Ayarlar"
+        actions += { startActivity(Intent(this, SettingsActivity::class.java)) }
+
+        android.app.AlertDialog.Builder(this)
+            .setTitle("Model Seç")
+            .setItems(items.toTypedArray()) { _, which -> actions[which]() }
+            .setNegativeButton("Kapat", null)
+            .show()
     }
 
     private fun requestOptionalPermissions() {
@@ -83,9 +149,15 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         binding.btnNewChat.setOnClickListener { startNewChat() }
         findViewById<View>(R.id.rowNewChat)?.setOnClickListener { binding.drawerLayout.closeDrawer(GravityCompat.START); startNewChat() }
         findViewById<View>(R.id.rowHistory)?.setOnClickListener { binding.drawerLayout.closeDrawer(GravityCompat.START); startActivity(Intent(this, ChatHistoryActivity::class.java)) }
+        findViewById<View>(R.id.rowModel)?.setOnClickListener { binding.drawerLayout.closeDrawer(GravityCompat.START); showModelPicker() }
         findViewById<View>(R.id.rowSettings)?.setOnClickListener { binding.drawerLayout.closeDrawer(GravityCompat.START); startActivity(Intent(this, SettingsActivity::class.java)) }
         findViewById<View>(R.id.rowTraining)?.setOnClickListener { binding.drawerLayout.closeDrawer(GravityCompat.START); startActivity(Intent(this, TrainingActivity::class.java)) }
         findViewById<View>(R.id.rowImageLab)?.setOnClickListener { binding.drawerLayout.closeDrawer(GravityCompat.START); startActivity(Intent(this, ImageGenerationActivity::class.java)) }
+        findViewById<View>(R.id.rowTerminal)?.setOnClickListener { binding.drawerLayout.closeDrawer(GravityCompat.START); startActivity(Intent(this, TerminalActivity::class.java)) }
+        findViewById<View>(R.id.rowVault)?.setOnClickListener { binding.drawerLayout.closeDrawer(GravityCompat.START); startActivity(Intent(this, VaultManagementActivity::class.java)) }
+        findViewById<View>(R.id.rowMemory)?.setOnClickListener { binding.drawerLayout.closeDrawer(GravityCompat.START); startActivity(Intent(this, MemoryManagementActivity::class.java)) }
+        findViewById<View>(R.id.rowWeather)?.setOnClickListener { binding.drawerLayout.closeDrawer(GravityCompat.START); startActivity(Intent(this, WeatherActivity::class.java)) }
+        findViewById<View>(R.id.rowNews)?.setOnClickListener { binding.drawerLayout.closeDrawer(GravityCompat.START); startActivity(Intent(this, NewsActivity::class.java)) }
         findViewById<android.widget.TextView>(R.id.textDrawerName)?.text = prefs.userName?.takeIf { it.isNotBlank() } ?: "Misafir"
         findViewById<android.widget.TextView>(R.id.textDrawerAvatar)?.text = (prefs.userName?.trim()?.firstOrNull()?.uppercaseChar() ?: 'Z').toString()
     }

@@ -37,6 +37,7 @@
         android:roundIcon="@drawable/zekatr_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.ZekaTR"
+        android:extractNativeLibs="true"
         android:usesCleartextTraffic="false">
 
         <activity

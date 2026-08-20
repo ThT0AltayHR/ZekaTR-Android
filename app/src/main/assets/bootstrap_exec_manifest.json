@@ -1,0 +1,1570 @@
+[
+{
+"path": "bin/zgrep",
+"so": "lib_zt_bin__zgrep.so"
+},
+{
+"path": "bin/dpkg-realpath",
+"so": "lib_zt_bin__dpkg-realpath.so"
+},
+{
+"path": "bin/ldattach",
+"so": "lib_zt_bin__ldattach.so"
+},
+{
+"path": "bin/fgrep",
+"so": "lib_zt_bin__fgrep.so"
+},
+{
+"path": "bin/tftp",
+"so": "lib_zt_bin__tftp.so"
+},
+{
+"path": "bin/hwclock",
+"so": "lib_zt_bin__hwclock.so"
+},
+{
+"path": "bin/setpgid",
+"so": "lib_zt_bin__setpgid.so"
+},
+{
+"path": "bin/gpg-error-config",
+"so": "lib_zt_bin__gpg-error-config.so"
+},
+{
+"path": "bin/colrm",
+"so": "lib_zt_bin__colrm.so"
+},
+{
+"path": "bin/setsid",
+"so": "lib_zt_bin__setsid.so"
+},
+{
+"path": "bin/dpkg-query",
+"so": "lib_zt_bin__dpkg-query.so"
+},
+{
+"path": "bin/rename",
+"so": "lib_zt_bin__rename.so"
+},
+{
+"path": "bin/cmd",
+"so": "lib_zt_bin__cmd.so"
+},
+{
+"path": "bin/pstree",
+"so": "lib_zt_bin__pstree.so"
+},
+{
+"path": "bin/gzip",
+"so": "lib_zt_bin__gzip.so"
+},
+{
+"path": "bin/termux-scoped-env-variable",
+"so": "lib_zt_bin__termux-scoped-env-variable.so"
+},
+{
+"path": "bin/termux-reset",
+"so": "lib_zt_bin__termux-reset.so"
+},
+{
+"path": "bin/uclampset",
+"so": "lib_zt_bin__uclampset.so"
+},
+{
+"path": "bin/fsck.cramfs",
+"so": "lib_zt_bin__fsck_cramfs.so"
+},
+{
+"path": "bin/termux-exec-system-linker-exec",
+"so": "lib_zt_bin__termux-exec-system-linker-exec.so"
+},
+{
+"path": "bin/rarp",
+"so": "lib_zt_bin__rarp.so"
+},
+{
+"path": "bin/bzip2",
+"so": "lib_zt_bin__bzip2.so"
+},
+{
+"path": "bin/getfacl",
+"so": "lib_zt_bin__getfacl.so"
+},
+{
+"path": "bin/termux-open-url",
+"so": "lib_zt_bin__termux-open-url.so"
+},
+{
+"path": "bin/more",
+"so": "lib_zt_bin__more.so"
+},
+{
+"path": "bin/curl",
+"so": "lib_zt_bin__curl.so"
+},
+{
+"path": "bin/dpkg-deb",
+"so": "lib_zt_bin__dpkg-deb.so"
+},
+{
+"path": "bin/resizepart",
+"so": "lib_zt_bin__resizepart.so"
+},
+{
+"path": "bin/mkfs.minix",
+"so": "lib_zt_bin__mkfs_minix.so"
+},
+{
+"path": "bin/mkfs.bfs",
+"so": "lib_zt_bin__mkfs_bfs.so"
+},
+{
+"path": "bin/funzip",
+"so": "lib_zt_bin__funzip.so"
+},
+{
+"path": "bin/lscpu",
+"so": "lib_zt_bin__lscpu.so"
+},
+{
+"path": "bin/settings",
+"so": "lib_zt_bin__settings.so"
+},
+{
+"path": "bin/addpart",
+"so": "lib_zt_bin__addpart.so"
+},
+{
+"path": "bin/rtcwake",
+"so": "lib_zt_bin__rtcwake.so"
+},
+{
+"path": "bin/libgcrypt-config",
+"so": "lib_zt_bin__libgcrypt-config.so"
+},
+{
+"path": "bin/ipmaddr",
+"so": "lib_zt_bin__ipmaddr.so"
+},
+{
+"path": "bin/unzipsfx",
+"so": "lib_zt_bin__unzipsfx.so"
+},
+{
+"path": "bin/getfattr",
+"so": "lib_zt_bin__getfattr.so"
+},
+{
+"path": "bin/find",
+"so": "lib_zt_bin__find.so"
+},
+{
+"path": "bin/termux-apps-info-app-version-name.sh",
+"so": "lib_zt_bin__termux-apps-info-app-version-name_sh.so"
+},
+{
+"path": "bin/ping",
+"so": "lib_zt_bin__ping.so"
+},
+{
+"path": "bin/peekfd",
+"so": "lib_zt_bin__peekfd.so"
+},
+{
+"path": "bin/libassuan-config",
+"so": "lib_zt_bin__libassuan-config.so"
+},
+{
+"path": "bin/flock",
+"so": "lib_zt_bin__flock.so"
+},
+{
+"path": "bin/zstdgrep",
+"so": "lib_zt_bin__zstdgrep.so"
+},
+{
+"path": "bin/sed",
+"so": "lib_zt_bin__sed.so"
+},
+{
+"path": "bin/chrt",
+"so": "lib_zt_bin__chrt.so"
+},
+{
+"path": "bin/mcookie",
+"so": "lib_zt_bin__mcookie.so"
+},
+{
+"path": "bin/namei",
+"so": "lib_zt_bin__namei.so"
+},
+{
+"path": "bin/gzexe",
+"so": "lib_zt_bin__gzexe.so"
+},
+{
+"path": "bin/apt-get",
+"so": "lib_zt_bin__apt-get.so"
+},
+{
+"path": "bin/mkfs.cramfs",
+"so": "lib_zt_bin__mkfs_cramfs.so"
+},
+{
+"path": "bin/zramctl",
+"so": "lib_zt_bin__zramctl.so"
+},
+{
+"path": "bin/colcrt",
+"so": "lib_zt_bin__colcrt.so"
+},
+{
+"path": "bin/irqtop",
+"so": "lib_zt_bin__irqtop.so"
+},
+{
+"path": "bin/slattach",
+"so": "lib_zt_bin__slattach.so"
+},
+{
+"path": "bin/lsns",
+"so": "lib_zt_bin__lsns.so"
+},
+{
+"path": "bin/termux-setup-storage",
+"so": "lib_zt_bin__termux-setup-storage.so"
+},
+{
+"path": "bin/nano",
+"so": "lib_zt_bin__nano.so"
+},
+{
+"path": "bin/xzgrep",
+"so": "lib_zt_bin__xzgrep.so"
+},
+{
+"path": "bin/curl-config",
+"so": "lib_zt_bin__curl-config.so"
+},
+{
+"path": "bin/hmac256",
+"so": "lib_zt_bin__hmac256.so"
+},
+{
+"path": "bin/lsclocks",
+"so": "lib_zt_bin__lsclocks.so"
+},
+{
+"path": "bin/termux-change-repo",
+"so": "lib_zt_bin__termux-change-repo.so"
+},
+{
+"path": "bin/zcmp",
+"so": "lib_zt_bin__zcmp.so"
+},
+{
+"path": "bin/whereis",
+"so": "lib_zt_bin__whereis.so"
+},
+{
+"path": "bin/fuser",
+"so": "lib_zt_bin__fuser.so"
+},
+{
+"path": "bin/pidof",
+"so": "lib_zt_bin__pidof.so"
+},
+{
+"path": "bin/lsfd",
+"so": "lib_zt_bin__lsfd.so"
+},
+{
+"path": "bin/unzip",
+"so": "lib_zt_bin__unzip.so"
+},
+{
+"path": "bin/pwdx",
+"so": "lib_zt_bin__pwdx.so"
+},
+{
+"path": "bin/choom",
+"so": "lib_zt_bin__choom.so"
+},
+{
+"path": "bin/unshare",
+"so": "lib_zt_bin__unshare.so"
+},
+{
+"path": "bin/yat2m",
+"so": "lib_zt_bin__yat2m.so"
+},
+{
+"path": "bin/zstdless",
+"so": "lib_zt_bin__zstdless.so"
+},
+{
+"path": "bin/termux-exec-ld-preload-lib",
+"so": "lib_zt_bin__termux-exec-ld-preload-lib.so"
+},
+{
+"path": "bin/rev",
+"so": "lib_zt_bin__rev.so"
+},
+{
+"path": "bin/plipconfig",
+"so": "lib_zt_bin__plipconfig.so"
+},
+{
+"path": "bin/dpkg-buildapi",
+"so": "lib_zt_bin__dpkg-buildapi.so"
+},
+{
+"path": "bin/killall",
+"so": "lib_zt_bin__killall.so"
+},
+{
+"path": "bin/grep",
+"so": "lib_zt_bin__grep.so"
+},
+{
+"path": "bin/bash",
+"so": "lib_zt_bin__bash.so"
+},
+{
+"path": "bin/chacl",
+"so": "lib_zt_bin__chacl.so"
+},
+{
+"path": "bin/chsh",
+"so": "lib_zt_bin__chsh.so"
+},
+{
+"path": "bin/route",
+"so": "lib_zt_bin__route.so"
+},
+{
+"path": "bin/hostname",
+"so": "lib_zt_bin__hostname.so"
+},
+{
+"path": "bin/pm",
+"so": "lib_zt_bin__pm.so"
+},
+{
+"path": "bin/hexdump",
+"so": "lib_zt_bin__hexdump.so"
+},
+{
+"path": "bin/ed",
+"so": "lib_zt_bin__ed.so"
+},
+{
+"path": "bin/gawk",
+"so": "lib_zt_bin__gawk.so"
+},
+{
+"path": "bin/termux-am",
+"so": "lib_zt_bin__termux-am.so"
+},
+{
+"path": "bin/xzdiff",
+"so": "lib_zt_bin__xzdiff.so"
+},
+{
+"path": "bin/lzmadec",
+"so": "lib_zt_bin__lzmadec.so"
+},
+{
+"path": "bin/gpg-error",
+"so": "lib_zt_bin__gpg-error.so"
+},
+{
+"path": "bin/pkg",
+"so": "lib_zt_bin__pkg.so"
+},
+{
+"path": "bin/red",
+"so": "lib_zt_bin__red.so"
+},
+{
+"path": "bin/termux-backup",
+"so": "lib_zt_bin__termux-backup.so"
+},
+{
+"path": "bin/patch",
+"so": "lib_zt_bin__patch.so"
+},
+{
+"path": "bin/sdiff",
+"so": "lib_zt_bin__sdiff.so"
+},
+{
+"path": "bin/idn2",
+"so": "lib_zt_bin__idn2.so"
+},
+{
+"path": "bin/setarch",
+"so": "lib_zt_bin__setarch.so"
+},
+{
+"path": "bin/termux-apps-info-app-version-name",
+"so": "lib_zt_bin__termux-apps-info-app-version-name.so"
+},
+{
+"path": "bin/fincore",
+"so": "lib_zt_bin__fincore.so"
+},
+{
+"path": "bin/xzless",
+"so": "lib_zt_bin__xzless.so"
+},
+{
+"path": "bin/pipesz",
+"so": "lib_zt_bin__pipesz.so"
+},
+{
+"path": "bin/gpgrt-config",
+"so": "lib_zt_bin__gpgrt-config.so"
+},
+{
+"path": "bin/fsck.minix",
+"so": "lib_zt_bin__fsck_minix.so"
+},
+{
+"path": "bin/termux-reload-settings",
+"so": "lib_zt_bin__termux-reload-settings.so"
+},
+{
+"path": "bin/col",
+"so": "lib_zt_bin__col.so"
+},
+{
+"path": "bin/tar",
+"so": "lib_zt_bin__tar.so"
+},
+{
+"path": "bin/ping6",
+"so": "lib_zt_bin__ping6.so"
+},
+{
+"path": "bin/apt-mark",
+"so": "lib_zt_bin__apt-mark.so"
+},
+{
+"path": "bin/iptunnel",
+"so": "lib_zt_bin__iptunnel.so"
+},
+{
+"path": "bin/ncursesw6-config",
+"so": "lib_zt_bin__ncursesw6-config.so"
+},
+{
+"path": "bin/diff",
+"so": "lib_zt_bin__diff.so"
+},
+{
+"path": "bin/unix2dos",
+"so": "lib_zt_bin__unix2dos.so"
+},
+{
+"path": "bin/ischroot",
+"so": "lib_zt_bin__ischroot.so"
+},
+{
+"path": "bin/mii-tool",
+"so": "lib_zt_bin__mii-tool.so"
+},
+{
+"path": "bin/netcap",
+"so": "lib_zt_bin__netcap.so"
+},
+{
+"path": "bin/tload",
+"so": "lib_zt_bin__tload.so"
+},
+{
+"path": "bin/exch",
+"so": "lib_zt_bin__exch.so"
+},
+{
+"path": "bin/ionice",
+"so": "lib_zt_bin__ionice.so"
+},
+{
+"path": "bin/lzmainfo",
+"so": "lib_zt_bin__lzmainfo.so"
+},
+{
+"path": "bin/setfacl",
+"so": "lib_zt_bin__setfacl.so"
+},
+{
+"path": "bin/pmap",
+"so": "lib_zt_bin__pmap.so"
+},
+{
+"path": "bin/ps",
+"so": "lib_zt_bin__ps.so"
+},
+{
+"path": "bin/zfgrep",
+"so": "lib_zt_bin__zfgrep.so"
+},
+{
+"path": "bin/zegrep",
+"so": "lib_zt_bin__zegrep.so"
+},
+{
+"path": "bin/termux-scoped-env-variable.bash",
+"so": "lib_zt_bin__termux-scoped-env-variable_bash.so"
+},
+{
+"path": "bin/delpart",
+"so": "lib_zt_bin__delpart.so"
+},
+{
+"path": "bin/apt-cache",
+"so": "lib_zt_bin__apt-cache.so"
+},
+{
+"path": "bin/am",
+"so": "lib_zt_bin__am.so"
+},
+{
+"path": "bin/dialog",
+"so": "lib_zt_bin__dialog.so"
+},
+{
+"path": "bin/zipgrep",
+"so": "lib_zt_bin__zipgrep.so"
+},
+{
+"path": "bin/bits",
+"so": "lib_zt_bin__bits.so"
+},
+{
+"path": "bin/look",
+"so": "lib_zt_bin__look.so"
+},
+{
+"path": "bin/script",
+"so": "lib_zt_bin__script.so"
+},
+{
+"path": "bin/logger",
+"so": "lib_zt_bin__logger.so"
+},
+{
+"path": "bin/lsirq",
+"so": "lib_zt_bin__lsirq.so"
+},
+{
+"path": "bin/watch",
+"so": "lib_zt_bin__watch.so"
+},
+{
+"path": "bin/setterm",
+"so": "lib_zt_bin__setterm.so"
+},
+{
+"path": "bin/top",
+"so": "lib_zt_bin__top.so"
+},
+{
+"path": "bin/fsfreeze",
+"so": "lib_zt_bin__fsfreeze.so"
+},
+{
+"path": "bin/termux-wake-lock",
+"so": "lib_zt_bin__termux-wake-lock.so"
+},
+{
+"path": "bin/dpkg-trigger",
+"so": "lib_zt_bin__dpkg-trigger.so"
+},
+{
+"path": "bin/taskset",
+"so": "lib_zt_bin__taskset.so"
+},
+{
+"path": "bin/losetup",
+"so": "lib_zt_bin__losetup.so"
+},
+{
+"path": "bin/tset",
+"so": "lib_zt_bin__tset.so"
+},
+{
+"path": "bin/sysctl",
+"so": "lib_zt_bin__sysctl.so"
+},
+{
+"path": "bin/bzgrep",
+"so": "lib_zt_bin__bzgrep.so"
+},
+{
+"path": "bin/pslog",
+"so": "lib_zt_bin__pslog.so"
+},
+{
+"path": "bin/termux-restore",
+"so": "lib_zt_bin__termux-restore.so"
+},
+{
+"path": "bin/dpkg-split",
+"so": "lib_zt_bin__dpkg-split.so"
+},
+{
+"path": "bin/cal",
+"so": "lib_zt_bin__cal.so"
+},
+{
+"path": "bin/bzip2recover",
+"so": "lib_zt_bin__bzip2recover.so"
+},
+{
+"path": "bin/attr",
+"so": "lib_zt_bin__attr.so"
+},
+{
+"path": "bin/termux-apps-info-env-variable.sh",
+"so": "lib_zt_bin__termux-apps-info-env-variable_sh.so"
+},
+{
+"path": "bin/dmesg",
+"so": "lib_zt_bin__dmesg.so"
+},
+{
+"path": "bin/apt-key",
+"so": "lib_zt_bin__apt-key.so"
+},
+{
+"path": "bin/setpriv",
+"so": "lib_zt_bin__setpriv.so"
+},
+{
+"path": "bin/zdiff",
+"so": "lib_zt_bin__zdiff.so"
+},
+{
+"path": "bin/prlimit",
+"so": "lib_zt_bin__prlimit.so"
+},
+{
+"path": "bin/dnsdomainname",
+"so": "lib_zt_bin__dnsdomainname.so"
+},
+{
+"path": "bin/termux-open",
+"so": "lib_zt_bin__termux-open.so"
+},
+{
+"path": "bin/pgrep",
+"so": "lib_zt_bin__pgrep.so"
+},
+{
+"path": "bin/termux-am-socket",
+"so": "lib_zt_bin__termux-am-socket.so"
+},
+{
+"path": "bin/fadvise",
+"so": "lib_zt_bin__fadvise.so"
+},
+{
+"path": "bin/su",
+"so": "lib_zt_bin__su.so"
+},
+{
+"path": "bin/termux-apps-info-env-variable.bash",
+"so": "lib_zt_bin__termux-apps-info-env-variable_bash.so"
+},
+{
+"path": "bin/termux-setup-package-manager",
+"so": "lib_zt_bin__termux-setup-package-manager.so"
+},
+{
+"path": "bin/zstd",
+"so": "lib_zt_bin__zstd.so"
+},
+{
+"path": "bin/run-parts",
+"so": "lib_zt_bin__run-parts.so"
+},
+{
+"path": "bin/trust",
+"so": "lib_zt_bin__trust.so"
+},
+{
+"path": "bin/zcat",
+"so": "lib_zt_bin__zcat.so"
+},
+{
+"path": "bin/netstat",
+"so": "lib_zt_bin__netstat.so"
+},
+{
+"path": "bin/pscap",
+"so": "lib_zt_bin__pscap.so"
+},
+{
+"path": "bin/xxhsum",
+"so": "lib_zt_bin__xxhsum.so"
+},
+{
+"path": "bin/arp",
+"so": "lib_zt_bin__arp.so"
+},
+{
+"path": "bin/clear",
+"so": "lib_zt_bin__clear.so"
+},
+{
+"path": "bin/ifconfig",
+"so": "lib_zt_bin__ifconfig.so"
+},
+{
+"path": "bin/dash",
+"so": "lib_zt_bin__dash.so"
+},
+{
+"path": "bin/bzmore",
+"so": "lib_zt_bin__bzmore.so"
+},
+{
+"path": "bin/lesskey",
+"so": "lib_zt_bin__lesskey.so"
+},
+{
+"path": "bin/termux-fix-shebang",
+"so": "lib_zt_bin__termux-fix-shebang.so"
+},
+{
+"path": "bin/coresched",
+"so": "lib_zt_bin__coresched.so"
+},
+{
+"path": "bin/cmp",
+"so": "lib_zt_bin__cmp.so"
+},
+{
+"path": "bin/diff3",
+"so": "lib_zt_bin__diff3.so"
+},
+{
+"path": "bin/wdctl",
+"so": "lib_zt_bin__wdctl.so"
+},
+{
+"path": "bin/termux-scoped-env-variable.sh",
+"so": "lib_zt_bin__termux-scoped-env-variable_sh.so"
+},
+{
+"path": "bin/dpkg",
+"so": "lib_zt_bin__dpkg.so"
+},
+{
+"path": "bin/blkpr",
+"so": "lib_zt_bin__blkpr.so"
+},
+{
+"path": "bin/scriptlive",
+"so": "lib_zt_bin__scriptlive.so"
+},
+{
+"path": "bin/ftp",
+"so": "lib_zt_bin__ftp.so"
+},
+{
+"path": "bin/login",
+"so": "lib_zt_bin__login.so"
+},
+{
+"path": "bin/fallocate",
+"so": "lib_zt_bin__fallocate.so"
+},
+{
+"path": "bin/npth-config",
+"so": "lib_zt_bin__npth-config.so"
+},
+{
+"path": "bin/savelog",
+"so": "lib_zt_bin__savelog.so"
+},
+{
+"path": "bin/dpkg-divert",
+"so": "lib_zt_bin__dpkg-divert.so"
+},
+{
+"path": "bin/egrep",
+"so": "lib_zt_bin__egrep.so"
+},
+{
+"path": "bin/zforce",
+"so": "lib_zt_bin__zforce.so"
+},
+{
+"path": "bin/lsipc",
+"so": "lib_zt_bin__lsipc.so"
+},
+{
+"path": "bin/xzmore",
+"so": "lib_zt_bin__xzmore.so"
+},
+{
+"path": "bin/dumpsexp",
+"so": "lib_zt_bin__dumpsexp.so"
+},
+{
+"path": "bin/asn1Decoding",
+"so": "lib_zt_bin__asn1Decoding.so"
+},
+{
+"path": "bin/termux-apps-info-app-version-name.bash",
+"so": "lib_zt_bin__termux-apps-info-app-version-name_bash.so"
+},
+{
+"path": "bin/logcat",
+"so": "lib_zt_bin__logcat.so"
+},
+{
+"path": "bin/getprop",
+"so": "lib_zt_bin__getprop.so"
+},
+{
+"path": "bin/xargs",
+"so": "lib_zt_bin__xargs.so"
+},
+{
+"path": "bin/mpicalc",
+"so": "lib_zt_bin__mpicalc.so"
+},
+{
+"path": "bin/dpkg-fsys-usrunmess",
+"so": "lib_zt_bin__dpkg-fsys-usrunmess.so"
+},
+{
+"path": "bin/scriptreplay",
+"so": "lib_zt_bin__scriptreplay.so"
+},
+{
+"path": "bin/uncompress",
+"so": "lib_zt_bin__uncompress.so"
+},
+{
+"path": "bin/p11-kit",
+"so": "lib_zt_bin__p11-kit.so"
+},
+{
+"path": "bin/gunzip",
+"so": "lib_zt_bin__gunzip.so"
+},
+{
+"path": "bin/apt-config",
+"so": "lib_zt_bin__apt-config.so"
+},
+{
+"path": "bin/pwait",
+"so": "lib_zt_bin__pwait.so"
+},
+{
+"path": "bin/vmstat",
+"so": "lib_zt_bin__vmstat.so"
+},
+{
+"path": "bin/apt",
+"so": "lib_zt_bin__apt.so"
+},
+{
+"path": "bin/dalvikvm",
+"so": "lib_zt_bin__dalvikvm.so"
+},
+{
+"path": "bin/chcpu",
+"so": "lib_zt_bin__chcpu.so"
+},
+{
+"path": "bin/start-stop-daemon",
+"so": "lib_zt_bin__start-stop-daemon.so"
+},
+{
+"path": "bin/dpkg-buildtree",
+"so": "lib_zt_bin__dpkg-buildtree.so"
+},
+{
+"path": "bin/xz",
+"so": "lib_zt_bin__xz.so"
+},
+{
+"path": "bin/waitpid",
+"so": "lib_zt_bin__waitpid.so"
+},
+{
+"path": "bin/tempfile",
+"so": "lib_zt_bin__tempfile.so"
+},
+{
+"path": "bin/nsenter",
+"so": "lib_zt_bin__nsenter.so"
+},
+{
+"path": "bin/dos2unix",
+"so": "lib_zt_bin__dos2unix.so"
+},
+{
+"path": "bin/uptime",
+"so": "lib_zt_bin__uptime.so"
+},
+{
+"path": "bin/termux-wake-unlock",
+"so": "lib_zt_bin__termux-wake-unlock.so"
+},
+{
+"path": "bin/pcre2-config",
+"so": "lib_zt_bin__pcre2-config.so"
+},
+{
+"path": "bin/xzdec",
+"so": "lib_zt_bin__xzdec.so"
+},
+{
+"path": "bin/getopt",
+"so": "lib_zt_bin__getopt.so"
+},
+{
+"path": "bin/prtstat",
+"so": "lib_zt_bin__prtstat.so"
+},
+{
+"path": "bin/termux-apps-info-env-variable",
+"so": "lib_zt_bin__termux-apps-info-env-variable.so"
+},
+{
+"path": "bin/ctrlaltdel",
+"so": "lib_zt_bin__ctrlaltdel.so"
+},
+{
+"path": "bin/df",
+"so": "lib_zt_bin__df.so"
+},
+{
+"path": "bin/ul",
+"so": "lib_zt_bin__ul.so"
+},
+{
+"path": "bin/termux-info",
+"so": "lib_zt_bin__termux-info.so"
+},
+{
+"path": "bin/hardlink",
+"so": "lib_zt_bin__hardlink.so"
+},
+{
+"path": "bin/filecap",
+"so": "lib_zt_bin__filecap.so"
+},
+{
+"path": "bin/mkfs",
+"so": "lib_zt_bin__mkfs.so"
+},
+{
+"path": "bin/lsof",
+"so": "lib_zt_bin__lsof.so"
+},
+{
+"path": "bin/asn1Coding",
+"so": "lib_zt_bin__asn1Coding.so"
+},
+{
+"path": "bin/bzdiff",
+"so": "lib_zt_bin__bzdiff.so"
+},
+{
+"path": "bin/update-alternatives",
+"so": "lib_zt_bin__update-alternatives.so"
+},
+{
+"path": "bin/readprofile",
+"so": "lib_zt_bin__readprofile.so"
+},
+{
+"path": "bin/znew",
+"so": "lib_zt_bin__znew.so"
+},
+{
+"path": "bin/telnet",
+"so": "lib_zt_bin__telnet.so"
+},
+{
+"path": "bin/blockdev",
+"so": "lib_zt_bin__blockdev.so"
+},
+{
+"path": "bin/renice",
+"so": "lib_zt_bin__renice.so"
+},
+{
+"path": "bin/nameif",
+"so": "lib_zt_bin__nameif.so"
+},
+{
+"path": "bin/coreutils",
+"so": "lib_zt_bin__coreutils.so"
+},
+{
+"path": "bin/zmore",
+"so": "lib_zt_bin__zmore.so"
+},
+{
+"path": "bin/free",
+"so": "lib_zt_bin__free.so"
+},
+{
+"path": "bin/asn1Parser",
+"so": "lib_zt_bin__asn1Parser.so"
+},
+{
+"path": "bin/column",
+"so": "lib_zt_bin__column.so"
+},
+{
+"path": "bin/enosys",
+"so": "lib_zt_bin__enosys.so"
+},
+{
+"path": "bin/pkill",
+"so": "lib_zt_bin__pkill.so"
+},
+{
+"path": "bin/wcurl",
+"so": "lib_zt_bin__wcurl.so"
+},
+{
+"path": "bin/less",
+"so": "lib_zt_bin__less.so"
+},
+{
+"path": "bin/setfattr",
+"so": "lib_zt_bin__setfattr.so"
+},
+{
+"path": "bin/gpgv",
+"so": "lib_zt_bin__gpgv.so"
+},
+{
+"path": "bin/isosize",
+"so": "lib_zt_bin__isosize.so"
+},
+{
+"path": "lib/libtermux-core_nos_cxx_tre.so",
+"so": "lib_zt_lib__libtermux-core_nos_cxx_tre_so.so"
+},
+{
+"path": "lib/libsmartcols.so",
+"so": "lib_zt_lib__libsmartcols_so.so"
+},
+{
+"path": "lib/libapt-pkg.so",
+"so": "lib_zt_lib__libapt-pkg_so.so"
+},
+{
+"path": "lib/libgnutls-dane.so",
+"so": "lib_zt_lib__libgnutls-dane_so.so"
+},
+{
+"path": "lib/libtermux-exec-linker-ld-preload.so",
+"so": "lib_zt_lib__libtermux-exec-linker-ld-preload_so.so"
+},
+{
+"path": "lib/libtermux-exec-ld-preload.so",
+"so": "lib_zt_lib__libtermux-exec-ld-preload_so.so"
+},
+{
+"path": "lib/libgnutlsxx.so",
+"so": "lib_zt_lib__libgnutlsxx_so.so"
+},
+{
+"path": "lib/libgnutls.so",
+"so": "lib_zt_lib__libgnutls_so.so"
+},
+{
+"path": "lib/libgpg-error.so",
+"so": "lib_zt_lib__libgpg-error_so.so"
+},
+{
+"path": "lib/libzstd.so.1.5.7",
+"so": "lib_zt_lib__libzstd_so_1_5_7.so"
+},
+{
+"path": "lib/libcrypto.so.3",
+"so": "lib_zt_lib__libcrypto_so_3.so"
+},
+{
+"path": "lib/libdrop_ambient.so",
+"so": "lib_zt_lib__libdrop_ambient_so.so"
+},
+{
+"path": "lib/libunbound.so",
+"so": "lib_zt_lib__libunbound_so.so"
+},
+{
+"path": "lib/libbz2.so.1.0.8",
+"so": "lib_zt_lib__libbz2_so_1_0_8.so"
+},
+{
+"path": "lib/libacl.so",
+"so": "lib_zt_lib__libacl_so.so"
+},
+{
+"path": "lib/libhogweed.so.6.11",
+"so": "lib_zt_lib__libhogweed_so_6_11.so"
+},
+{
+"path": "lib/libz.so.1.3.2",
+"so": "lib_zt_lib__libz_so_1_3_2.so"
+},
+{
+"path": "lib/libtirpc.so",
+"so": "lib_zt_lib__libtirpc_so.so"
+},
+{
+"path": "lib/libtasn1.so",
+"so": "lib_zt_lib__libtasn1_so.so"
+},
+{
+"path": "lib/libmd.so",
+"so": "lib_zt_lib__libmd_so.so"
+},
+{
+"path": "lib/libpcre2-16.so",
+"so": "lib_zt_lib__libpcre2-16_so.so"
+},
+{
+"path": "lib/libcap-ng.so",
+"so": "lib_zt_lib__libcap-ng_so.so"
+},
+{
+"path": "lib/libevent-2.1.so",
+"so": "lib_zt_lib__libevent-2_1_so.so"
+},
+{
+"path": "lib/libmagic.so",
+"so": "lib_zt_lib__libmagic_so.so"
+},
+{
+"path": "lib/libc++_shared.so",
+"so": "lib_zt_lib__libc++_shared_so.so"
+},
+{
+"path": "lib/libcharset.so",
+"so": "lib_zt_lib__libcharset_so.so"
+},
+{
+"path": "lib/gawk/readfile.so",
+"so": "lib_zt_lib__gawk__readfile_so.so"
+},
+{
+"path": "lib/gawk/fnmatch.so",
+"so": "lib_zt_lib__gawk__fnmatch_so.so"
+},
+{
+"path": "lib/gawk/inplace.so",
+"so": "lib_zt_lib__gawk__inplace_so.so"
+},
+{
+"path": "lib/gawk/fork.so",
+"so": "lib_zt_lib__gawk__fork_so.so"
+},
+{
+"path": "lib/gawk/revoutput.so",
+"so": "lib_zt_lib__gawk__revoutput_so.so"
+},
+{
+"path": "lib/gawk/readdir.so",
+"so": "lib_zt_lib__gawk__readdir_so.so"
+},
+{
+"path": "lib/gawk/time.so",
+"so": "lib_zt_lib__gawk__time_so.so"
+},
+{
+"path": "lib/gawk/ordchr.so",
+"so": "lib_zt_lib__gawk__ordchr_so.so"
+},
+{
+"path": "lib/gawk/filefuncs.so",
+"so": "lib_zt_lib__gawk__filefuncs_so.so"
+},
+{
+"path": "lib/gawk/revtwoway.so",
+"so": "lib_zt_lib__gawk__revtwoway_so.so"
+},
+{
+"path": "lib/gawk/intdiv.so",
+"so": "lib_zt_lib__gawk__intdiv_so.so"
+},
+{
+"path": "lib/gawk/rwarray.so",
+"so": "lib_zt_lib__gawk__rwarray_so.so"
+},
+{
+"path": "lib/libattr.so",
+"so": "lib_zt_lib__libattr_so.so"
+},
+{
+"path": "lib/libandroid-posix-semaphore.so",
+"so": "lib_zt_lib__libandroid-posix-semaphore_so.so"
+},
+{
+"path": "lib/libevent_pthreads-2.1.so",
+"so": "lib_zt_lib__libevent_pthreads-2_1_so.so"
+},
+{
+"path": "lib/libevent_core-2.1.so",
+"so": "lib_zt_lib__libevent_core-2_1_so.so"
+},
+{
+"path": "lib/libandroid-selinux.so",
+"so": "lib_zt_lib__libandroid-selinux_so.so"
+},
+{
+"path": "lib/libassuan.so",
+"so": "lib_zt_lib__libassuan_so.so"
+},
+{
+"path": "lib/libngtcp2_crypto_ossl.so",
+"so": "lib_zt_lib__libngtcp2_crypto_ossl_so.so"
+},
+{
+"path": "lib/libandroid-glob.so",
+"so": "lib_zt_lib__libandroid-glob_so.so"
+},
+{
+"path": "lib/libnghttp3.so",
+"so": "lib_zt_lib__libnghttp3_so.so"
+},
+{
+"path": "lib/ossl-modules/legacy.so",
+"so": "lib_zt_lib__ossl-modules__legacy_so.so"
+},
+{
+"path": "lib/engines-3/loader_attic.so",
+"so": "lib_zt_lib__engines-3__loader_attic_so.so"
+},
+{
+"path": "lib/engines-3/capi.so",
+"so": "lib_zt_lib__engines-3__capi_so.so"
+},
+{
+"path": "lib/libgcrypt.so",
+"so": "lib_zt_lib__libgcrypt_so.so"
+},
+{
+"path": "lib/libprocps.so",
+"so": "lib_zt_lib__libprocps_so.so"
+},
+{
+"path": "lib/libngtcp2.so",
+"so": "lib_zt_lib__libngtcp2_so.so"
+},
+{
+"path": "lib/libiconv.so",
+"so": "lib_zt_lib__libiconv_so.so"
+},
+{
+"path": "lib/libtermux-core_nos_c_tre.so",
+"so": "lib_zt_lib__libtermux-core_nos_c_tre_so.so"
+},
+{
+"path": "lib/libp11-kit.so",
+"so": "lib_zt_lib__libp11-kit_so.so"
+},
+{
+"path": "lib/libssl.so.3",
+"so": "lib_zt_lib__libssl_so_3.so"
+},
+{
+"path": "lib/libhistory.so.8.3",
+"so": "lib_zt_lib__libhistory_so_8_3.so"
+},
+{
+"path": "lib/libncursesw.so.6.5",
+"so": "lib_zt_lib__libncursesw_so_6_5.so"
+},
+{
+"path": "lib/libmpfr.so",
+"so": "lib_zt_lib__libmpfr_so.so"
+},
+{
+"path": "lib/libidn2.so",
+"so": "lib_zt_lib__libidn2_so.so"
+},
+{
+"path": "lib/liblsof.so",
+"so": "lib_zt_lib__liblsof_so.so"
+},
+{
+"path": "lib/libpcre2-8.so",
+"so": "lib_zt_lib__libpcre2-8_so.so"
+},
+{
+"path": "lib/libpcre2-posix.so",
+"so": "lib_zt_lib__libpcre2-posix_so.so"
+},
+{
+"path": "lib/libandroid-support.so",
+"so": "lib_zt_lib__libandroid-support_so.so"
+},
+{
+"path": "lib/liblzma.so.5.8.3",
+"so": "lib_zt_lib__liblzma_so_5_8_3.so"
+},
+{
+"path": "lib/libgmp.so",
+"so": "lib_zt_lib__libgmp_so.so"
+},
+{
+"path": "lib/libxxhash.so.0.8.3",
+"so": "lib_zt_lib__libxxhash_so_0_8_3.so"
+},
+{
+"path": "lib/pkcs11/p11-kit-client.so",
+"so": "lib_zt_lib__pkcs11__p11-kit-client_so.so"
+},
+{
+"path": "lib/pkcs11/p11-kit-trust.so",
+"so": "lib_zt_lib__pkcs11__p11-kit-trust_so.so"
+},
+{
+"path": "lib/libffi.so",
+"so": "lib_zt_lib__libffi_so.so"
+},
+{
+"path": "lib/libgmpxx.so",
+"so": "lib_zt_lib__libgmpxx_so.so"
+},
+{
+"path": "lib/libssh2.so",
+"so": "lib_zt_lib__libssh2_so.so"
+},
+{
+"path": "lib/libnghttp2.so",
+"so": "lib_zt_lib__libnghttp2_so.so"
+},
+{
+"path": "lib/libcurl.so",
+"so": "lib_zt_lib__libcurl_so.so"
+},
+{
+"path": "lib/libtermux-exec-direct-ld-preload.so",
+"so": "lib_zt_lib__libtermux-exec-direct-ld-preload_so.so"
+},
+{
+"path": "lib/libreadline.so.8.3",
+"so": "lib_zt_lib__libreadline_so_8_3.so"
+},
+{
+"path": "lib/libapt-private.so",
+"so": "lib_zt_lib__libapt-private_so.so"
+},
+{
+"path": "lib/libnpth.so",
+"so": "lib_zt_lib__libnpth_so.so"
+},
+{
+"path": "lib/libevent_extra-2.1.so",
+"so": "lib_zt_lib__libevent_extra-2_1_so.so"
+},
+{
+"path": "lib/libpcre2-32.so",
+"so": "lib_zt_lib__libpcre2-32_so.so"
+},
+{
+"path": "lib/libtermux-exec_nos_c_tre.so",
+"so": "lib_zt_lib__libtermux-exec_nos_c_tre_so.so"
+},
+{
+"path": "lib/liblz4.so",
+"so": "lib_zt_lib__liblz4_so.so"
+},
+{
+"path": "lib/libnettle.so.8.11",
+"so": "lib_zt_lib__libnettle_so_8_11.so"
+},
+{
+"path": "lib/libunistring.so",
+"so": "lib_zt_lib__libunistring_so.so"
+},
+{
+"path": "libexec/less-osc8-open",
+"so": "lib_zt_libexec__less-osc8-open.so"
+},
+{
+"path": "libexec/inetd",
+"so": "lib_zt_libexec__inetd.so"
+},
+{
+"path": "libexec/telnetd",
+"so": "lib_zt_libexec__telnetd.so"
+},
+{
+"path": "libexec/tftpd",
+"so": "lib_zt_libexec__tftpd.so"
+},
+{
+"path": "libexec/termux-am/am.apk",
+"so": "lib_zt_libexec__termux-am__am_apk.so"
+},
+{
+"path": "libexec/rmt",
+"so": "lib_zt_libexec__rmt.so"
+},
+{
+"path": "libexec/awk/pwcat",
+"so": "lib_zt_libexec__awk__pwcat.so"
+},
+{
+"path": "libexec/awk/grcat",
+"so": "lib_zt_libexec__awk__grcat.so"
+},
+{
+"path": "libexec/dpkg/dpkg-db-keeper",
+"so": "lib_zt_libexec__dpkg__dpkg-db-keeper.so"
+},
+{
+"path": "libexec/dpkg/dpkg-db-backup",
+"so": "lib_zt_libexec__dpkg__dpkg-db-backup.so"
+},
+{
+"path": "libexec/p11-kit/p11-kit-remote",
+"so": "lib_zt_libexec__p11-kit__p11-kit-remote.so"
+},
+{
+"path": "libexec/p11-kit/trust-extract-compat",
+"so": "lib_zt_libexec__p11-kit__trust-extract-compat.so"
+},
+{
+"path": "libexec/p11-kit/p11-kit-server",
+"so": "lib_zt_libexec__p11-kit__p11-kit-server.so"
+},
+{
+"path": "libexec/termux/command-not-found",
+"so": "lib_zt_libexec__termux__command-not-found.so"
+},
+{
+"path": "libexec/installed-tests/termux-core/app/main/termux-external-packages_tests",
+"so": "lib_zt_libexec__installed-tests__termux-core__app__main__termux-external-packages_tests.so"
+},
+{
+"path": "libexec/installed-tests/termux-core/app/main/termux-core-tests",
+"so": "lib_zt_libexec__installed-tests__termux-core__app__main__termux-core-tests.so"
+},
+{
+"path": "libexec/installed-tests/termux-core/app/main/scripts/termux-core-main-app_runtime-script-tests",
+"so": "lib_zt_libexec__installed-tests__termux-core__app__main__scripts__termux-core-main-app_runtime-script-tests.so"
+},
+{
+"path": "libexec/installed-tests/termux-core/app/main/scripts/termux/shell/command/environment/termux-apps-info-env-variable_runtime-script-tests",
+"so": "lib_zt_termux-apps-info-env-variable_runtime-script-tests_0188f63798919720.so"
+},
+{
+"path": "libexec/installed-tests/termux-core/app/main/scripts/termux/shell/command/environment/termux-shell-command-environment_runtime-script-tests",
+"so": "lib_zt_termux-shell-command-environment_runtime-script-tests_8575827f96e90b8b.so"
+},
+{
+"path": "libexec/installed-tests/termux-core/app/main/scripts/termux/shell/command/environment/termux-scoped-env-variable_runtime-script-tests",
+"so": "lib_zt_termux-scoped-env-variable_runtime-script-tests_2ce756bb017b3733.so"
+},
+{
+"path": "libexec/installed-tests/termux-core/app/main/scripts/termux/shell/command/environment/termux-apps-info-app-version-name_runtime-script-tests",
+"so": "lib_zt_termux-apps-info-app-version-name_runtime-script-tests_79dacb5e62685dda.so"
+},
+{
+"path": "libexec/installed-tests/termux-core/app/main/termux-core-main-app_tests",
+"so": "lib_zt_libexec__installed-tests__termux-core__app__main__termux-core-main-app_tests.so"
+},
+{
+"path": "libexec/installed-tests/termux-core/lib/termux-core_nos_c/tre/libtermux-core_nos_c_tre_tests",
+"so": "lib_zt_libexec__installed-tests__termux-core__lib__termux-core_nos_c__tre__libtermux-core_nos_c_tre_tests.so"
+},
+{
+"path": "libexec/installed-tests/termux-core/lib/termux-core_nos_c/tre/bin/libtermux-core_nos_c_tre_unit-binary-tests-fsanitize",
+"so": "lib_zt_libtermux-core_nos_c_tre_unit-binary-tests-fsanitize_83044172c9dc45a0.so"
+},
+{
+"path": "libexec/installed-tests/termux-core/lib/termux-core_nos_c/tre/bin/libtermux-core_nos_c_tre_unit-binary-tests-nofsanitize",
+"so": "lib_zt_libtermux-core_nos_c_tre_unit-binary-tests-nofsanitize_14d7044cd2d8ed33.so"
+},
+{
+"path": "libexec/installed-tests/termux-exec/app/main/termux-exec-tests",
+"so": "lib_zt_libexec__installed-tests__termux-exec__app__main__termux-exec-tests.so"
+},
+{
+"path": "libexec/installed-tests/termux-exec/lib/termux-exec_nos_c/tre/bin/libtermux-exec_nos_c_tre_runtime-binary-tests-fsanitize",
+"so": "lib_zt_libtermux-exec_nos_c_tre_runtime-binary-tests-fsanitize_03374fe483f454a6.so"
+},
+{
+"path": "libexec/installed-tests/termux-exec/lib/termux-exec_nos_c/tre/bin/libtermux-exec_nos_c_tre_runtime-binary-tests-fsanitize28",
+"so": "lib_zt_libtermux-exec_nos_c_tre_runtime-binary-tests-fsanitize28_fdec7295a6a7743a.so"
+},
+{
+"path": "libexec/installed-tests/termux-exec/lib/termux-exec_nos_c/tre/bin/libtermux-exec_nos_c_tre_unit-binary-tests-fsanitize",
+"so": "lib_zt_libtermux-exec_nos_c_tre_unit-binary-tests-fsanitize_60f893db2c0be910.so"
+},
+{
+"path": "libexec/installed-tests/termux-exec/lib/termux-exec_nos_c/tre/bin/libtermux-exec_nos_c_tre_unit-binary-tests-nofsanitize",
+"so": "lib_zt_libtermux-exec_nos_c_tre_unit-binary-tests-nofsanitize_8409c6bd79d9522f.so"
+},
+{
+"path": "libexec/installed-tests/termux-exec/lib/termux-exec_nos_c/tre/bin/libtermux-exec_nos_c_tre_runtime-binary-tests-nofsanitize",
+"so": "lib_zt_libtermux-exec_nos_c_tre_runtime-binary-tests-nofsanitize_a94ec2eaf9b969b2.so"
+},
+{
+"path": "libexec/installed-tests/termux-exec/lib/termux-exec_nos_c/tre/bin/libtermux-exec_nos_c_tre_runtime-binary-tests-nofsanitize28",
+"so": "lib_zt_libtermux-exec_nos_c_tre_runtime-binary-tests-nofsanitize28_9bdc4583f9b804e1.so"
+},
+{
+"path": "libexec/installed-tests/termux-exec/lib/termux-exec_nos_c/tre/scripts/libtermux-exec_nos_c_tre_runtime-script-tests",
+"so": "lib_zt_libtermux-exec_nos_c_tre_runtime-script-tests_e4b74096f9514d3e.so"
+},
+{
+"path": "libexec/installed-tests/termux-exec/lib/termux-exec_nos_c/tre/scripts/termux/api/termux_exec/service/ld_preload/direct/exec/files/print-args-termux-script.sh",
+"so": "lib_zt_print-args-termux-script_sh_6768177a274f044f.so"
+},
+{
+"path": "libexec/installed-tests/termux-exec/lib/termux-exec_nos_c/tre/scripts/termux/api/termux_exec/service/ld_preload/direct/exec/files/print-args-linux-script.sh",
+"so": "lib_zt_print-args-linux-script_sh_7ee4f1cf34cb0501.so"
+},
+{
+"path": "libexec/installed-tests/termux-exec/lib/termux-exec_nos_c/tre/scripts/termux/api/termux_exec/service/ld_preload/direct/exec/files/print-args-binary",
+"so": "lib_zt_print-args-binary_be527fe882666114.so"
+},
+{
+"path": "libexec/installed-tests/termux-exec/lib/termux-exec_nos_c/tre/scripts/termux/api/termux_exec/service/ld_preload/direct/exec/exec-intercept_runtime-script-tests",
+"so": "lib_zt_exec-intercept_runtime-script-tests_87330fe56669de31.so"
+},
+{
+"path": "libexec/installed-tests/termux-exec/lib/termux-exec_nos_c/tre/libtermux-exec_nos_c_tre_tests",
+"so": "lib_zt_libexec__installed-tests__termux-exec__lib__termux-exec_nos_c__tre__libtermux-exec_nos_c_tre_tests.so"
+},
+{
+"path": "libexec/lessecho",
+"so": "lib_zt_libexec__lessecho.so"
+},
+{
+"path": "libexec/syslogd",
+"so": "lib_zt_libexec__syslogd.so"
+},
+{
+"path": "libexec/coreutils/libstdbuf.so",
+"so": "lib_zt_libexec__coreutils__libstdbuf_so.so"
+},
+{
+"path": "libexec/coreutils/cat",
+"so": "lib_zt_libexec__coreutils__cat.so"
+},
+{
+"path": "libexec/frcode",
+"so": "lib_zt_libexec__frcode.so"
+}
+]

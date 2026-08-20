@@ -13,6 +13,15 @@ android {
         targetSdk 34
         versionCode 2
         versionName "2.0.0"
+
+        // llama.cpp submodule eklendikten sonra yorumdan cikar (bkz. asagidaki
+        // externalNativeBuild aciklamasi ve app/src/main/cpp/README.md):
+        externalNativeBuild {
+            cmake {
+                arguments "-DANDROID_STL=c++_shared"
+                abiFilters "arm64-v8a"
+            }
+        }
     }
 
     buildTypes {
@@ -36,6 +45,46 @@ android {
 
     buildFeatures {
         viewBinding true
+    }
+
+    // GGUF dosyalari zaten sikistirilamayacak kadar yogun (binary+quantized);
+    // AAPT'nin bunlari sikistirmaya CALISMASINI engeller (hem derleme daha
+    // hizli olur hem de bazi cihazlarda buyuk sikistirilmis assetlerin acilma
+    // hatasi onlenir). app/src/main/assets/ggufmodel/*.gguf icin gecerli.
+    androidResources {
+        noCompress += ["gguf"]
+    }
+
+    // ================= YEREL GGUF CIKARIM MOTORU (llama.cpp) =================
+    // Bu blok BILEREK KAPALI (yorum satiri) birakildi ki mevcut proje su an
+    // llama.cpp kaynak kodu olmadan da SORUNSUZ derlensin. Gercek yerel model
+    // cikarimini (token uretimini) ACMAK icin:
+    //   1) Terminalde (bilgisayarinda, proje kok dizininde):
+    //        git submodule add https://github.com/ggerganov/llama.cpp app/src/main/cpp/llama.cpp
+    //   2) Asagidaki 4 satiri (externalNativeBuild + defaultConfig.externalNativeBuild.cmake)
+    //      yorumdan cikar.
+    //   3) app/src/main/cpp/README.md dosyasindaki adimlari izle (CMakeLists.txt
+    //      ve llama_bridge.cpp zaten hazir, sadece submodule eklenmesini bekliyor).
+    //
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.22.1"
+        }
+    }
+    // ===========================================================================
+
+    // TERMINAL FIX (Android 10+/W^X): bootstrap icindeki calistirilabilir dosyalar
+    // artik jniLibs/arm64-v8a altinda lib_zt_*.so olarak paketleniyor. Android 10+
+    // hedefleyen (targetSdk 29+) uygulamalarda app'in KENDI yazdigi private data
+    // dizinindeki dosyalar calistirilamaz (noexec) - SADECE nativeLibraryDir bu
+    // kisitlamadan muaftir. useLegacyPackaging = true, bu .so dosyalarinin APK
+    // icinde SIKISTIRILMAMIS ve kurulum aninda gercek dosya olarak (mmap degil)
+    // nativeLibraryDir'e cikartilmasini saglar - calistirilabilir olmalari icin sart.
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging = true
+        }
     }
 }
 

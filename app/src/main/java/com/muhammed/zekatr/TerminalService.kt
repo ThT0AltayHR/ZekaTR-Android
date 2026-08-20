@@ -31,7 +31,9 @@ class TerminalService(private val context: Context) {
         val env = System.getenv().toMutableMap()
         env["PREFIX"] = prefix.absolutePath
         env["HOME"] = homeDir.absolutePath
-        env["LD_LIBRARY_PATH"] = "${prefix.absolutePath}/lib"
+        // nativeLibraryDir eklendi: bin/ ve libexec/ altindaki dosyalar artik oraya symlink
+        // (bkz. TermuxBootstrapInstaller) - bagli olduklari paylasilan .so'lar da orada.
+        env["LD_LIBRARY_PATH"] = "${prefix.absolutePath}/lib:${context.applicationInfo.nativeLibraryDir}"
         env["PATH"] = "${prefix.absolutePath}/bin:${System.getenv("PATH")}"
         env["TMPDIR"] = context.cacheDir.absolutePath
         return env

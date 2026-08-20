@@ -8,6 +8,7 @@
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ZekaTR" android:textColor="@color/text_primary" android:textSize="18sp" android:textStyle="bold" />
                 <TextView android:id="@+id/textModelStatus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Yerel beyin • hazır" android:textColor="@color/text_secondary" android:textSize="11sp" />
             </LinearLayout>
+            <TextView android:id="@+id/btnModel" android:layout_width="wrap_content" android:layout_height="34dp" android:layout_marginEnd="6dp" android:paddingHorizontal="12dp" android:gravity="center" android:background="@drawable/bg_model_chip" android:text="Model" android:textColor="@color/accent" android:textSize="12sp" android:textStyle="bold" android:clickable="true" android:focusable="true" />
             <ImageButton android:id="@+id/btnNewChat" android:layout_width="42dp" android:layout_height="42dp" android:background="?attr/selectableItemBackgroundBorderless" android:src="@drawable/ic_new_chat" android:contentDescription="Yeni sohbet" />
         </LinearLayout>
         <View android:id="@+id/topDivider" android:layout_width="0dp" android:layout_height="1dp" android:background="@color/divider" app:layout_constraintTop_toBottomOf="@id/topBar" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" />

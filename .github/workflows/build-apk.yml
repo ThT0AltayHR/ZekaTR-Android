@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Kaynak kodu al
         uses: actions/checkout@v4
+        with:
+          lfs: true
 
       - name: JDK 17 kur
         uses: actions/setup-java@v4

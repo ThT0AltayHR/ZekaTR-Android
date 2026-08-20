@@ -3,7 +3,6 @@ package com.muhammed.zekatr
 import android.content.Context
 import android.util.Base64
 import org.json.JSONArray
-import org.json.JSONObject
 import java.nio.charset.StandardCharsets
 import java.security.KeyStore
 import javax.crypto.Cipher
@@ -104,7 +103,7 @@ class SecretVault(context: Context) {
             val o = org.json.JSONObject()
             o.put("name", name)
             o.put("created", meta.first)
-            if (meta.second != null) o.put("used", meta.second) else o.put("used", JSONObject.NULL)
+            if (meta.second != null) o.put("used", meta.second) else o.put("used", JSONArray.NULL)
             arr.put(o)
         }
         sp.edit().putString(indexKey, arr.toString()).apply()

@@ -1,171 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="300dp"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/bg_main"
-    android:paddingTop="32dp">
+    android:background="@color/bg_main">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="24dp"
-        android:text="@string/app_name"
-        android:textColor="@color/text_primary"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
+    <!-- Ust profil alani (ChatGPT tarzi: avatar + isim + alt baslik) -->
     <LinearLayout
-        android:id="@+id/rowNewChat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="?attr/selectableItemBackground"
         android:paddingHorizontal="20dp"
-        android:paddingVertical="14dp">
-
-        <ImageView
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:src="@drawable/ic_new_chat"
-            android:contentDescription="@string/history_new_chat" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/history_new_chat"
-            android:textColor="@color/text_primary"
-            android:textSize="15sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/rowHistory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="?attr/selectableItemBackground"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="14dp">
-
-        <ImageView
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:src="@drawable/ic_history"
-            android:contentDescription="@string/history_title" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/history_title"
-            android:textColor="@color/text_primary"
-            android:textSize="15sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/rowTraining"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="?attr/selectableItemBackground"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="14dp">
-        <TextView android:layout_width="22dp" android:layout_height="22dp" android:text="🧠" android:gravity="center" />
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="Eğitim Merkezi" android:textColor="@color/text_primary" android:textSize="15sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/rowImageLab"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="?attr/selectableItemBackground"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="14dp">
-        <TextView android:layout_width="22dp" android:layout_height="22dp" android:text="🎨" android:gravity="center" />
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="Görsel Atölyesi" android:textColor="@color/text_primary" android:textSize="15sp" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginVertical="8dp"
-        android:background="@color/divider" />
-
-    <LinearLayout
-        android:id="@+id/rowSettings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="?attr/selectableItemBackground"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="14dp">
-
-        <ImageView
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:src="@drawable/ic_settings"
-            android:contentDescription="@string/settings_title" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/settings_title"
-            android:textColor="@color/text_primary"
-            android:textSize="15sp" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/divider" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:padding="18dp">
+        android:paddingTop="28dp"
+        android:paddingBottom="16dp">
 
         <TextView
             android:id="@+id/textDrawerAvatar"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:background="@drawable/bg_avatar_circle"
             android:gravity="center"
             android:text="Z"
             android:textColor="@color/white"
+            android:textSize="17sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textDrawerName"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_marginStart="12dp"
-            android:textColor="@color/text_primary"
-            android:textSize="14sp" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textDrawerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ZekaTR Thinking Model"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+        </LinearLayout>
     </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="14dp"
+            android:paddingBottom="10dp">
+
+            <!-- ================= Bolum: Sohbet ================= -->
+            <TextView style="@style/DrawerSectionLabel" android:text="Sohbet" />
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_drawer_card">
+                <LinearLayout android:id="@+id/rowNewChat" style="@style/DrawerRow">
+                    <ImageView style="@style/DrawerRowIcon" android:src="@drawable/ic_new_chat" android:contentDescription="@string/history_new_chat" />
+                    <TextView style="@style/DrawerRowText" android:text="@string/history_new_chat" />
+                </LinearLayout>
+                <View style="@style/DrawerDivider" />
+                <LinearLayout android:id="@+id/rowHistory" style="@style/DrawerRow">
+                    <ImageView style="@style/DrawerRowIcon" android:src="@drawable/ic_history" android:contentDescription="@string/history_title" />
+                    <TextView style="@style/DrawerRowText" android:text="@string/history_title" />
+                </LinearLayout>
+                <View style="@style/DrawerDivider" />
+                <LinearLayout android:id="@+id/rowModel" style="@style/DrawerRow">
+                    <TextView style="@style/DrawerRowEmoji" android:text="🧠" />
+                    <TextView style="@style/DrawerRowText" android:text="Model Seç" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ================= Bolum: Araclar ================= -->
+            <TextView style="@style/DrawerSectionLabel" android:text="Araçlar" />
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_drawer_card">
+                <LinearLayout android:id="@+id/rowTraining" style="@style/DrawerRow">
+                    <TextView style="@style/DrawerRowEmoji" android:text="🎓" />
+                    <TextView style="@style/DrawerRowText" android:text="Eğitim Merkezi" />
+                </LinearLayout>
+                <View style="@style/DrawerDivider" />
+                <LinearLayout android:id="@+id/rowImageLab" style="@style/DrawerRow">
+                    <TextView style="@style/DrawerRowEmoji" android:text="🎨" />
+                    <TextView style="@style/DrawerRowText" android:text="Görsel Atölyesi" />
+                </LinearLayout>
+                <View style="@style/DrawerDivider" />
+                <LinearLayout android:id="@+id/rowTerminal" style="@style/DrawerRow">
+                    <TextView style="@style/DrawerRowEmoji" android:text="⌨️" />
+                    <TextView style="@style/DrawerRowText" android:text="Terminal" />
+                </LinearLayout>
+                <View style="@style/DrawerDivider" />
+                <LinearLayout android:id="@+id/rowVault" style="@style/DrawerRow">
+                    <TextView style="@style/DrawerRowEmoji" android:text="🔐" />
+                    <TextView style="@style/DrawerRowText" android:text="Güvenli Kasa" />
+                </LinearLayout>
+                <View style="@style/DrawerDivider" />
+                <LinearLayout android:id="@+id/rowMemory" style="@style/DrawerRow">
+                    <TextView style="@style/DrawerRowEmoji" android:text="🗂️" />
+                    <TextView style="@style/DrawerRowText" android:text="Bellek Yönetimi" />
+                </LinearLayout>
+                <View style="@style/DrawerDivider" />
+                <LinearLayout android:id="@+id/rowWeather" style="@style/DrawerRow">
+                    <TextView style="@style/DrawerRowEmoji" android:text="⛅" />
+                    <TextView style="@style/DrawerRowText" android:text="Hava Durumu" />
+                </LinearLayout>
+                <View style="@style/DrawerDivider" />
+                <LinearLayout android:id="@+id/rowNews" style="@style/DrawerRow">
+                    <TextView style="@style/DrawerRowEmoji" android:text="📰" />
+                    <TextView style="@style/DrawerRowText" android:text="Haberler" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ================= Bolum: Hesap ================= -->
+            <TextView style="@style/DrawerSectionLabel" android:text="Hesap" />
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_drawer_card">
+                <LinearLayout android:id="@+id/rowSettings" style="@style/DrawerRow">
+                    <ImageView style="@style/DrawerRowIcon" android:src="@drawable/ic_settings" android:contentDescription="@string/settings_title" />
+                    <TextView style="@style/DrawerRowText" android:text="@string/settings_title" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="8dp" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

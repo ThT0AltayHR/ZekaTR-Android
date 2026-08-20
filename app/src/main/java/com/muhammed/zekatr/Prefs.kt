@@ -26,10 +26,11 @@ class Prefs(context: Context) {
         get() = ThinkingLevel.values().getOrElse(sp.getInt(KEY_THINKING, 1)) { ThinkingLevel.NORMAL }
         set(value) = sp.edit().putInt(KEY_THINKING, value.ordinal).apply()
 
-    /** Kullanici web aramasini acikca ACTIVATE ettiyse true olur.
-     *  Varsayilan kapalidir; internet erisimi gerektiren her ozellik opt-in'dir. */
+    /** Varsayilan ACIK: bilinmeyen bir soru geldiginde kullaniciya sormak yerine
+     *  otomatik olarak web'de arayip ogrenir (bkz. Brain.kt adim 8). Ayarlar'dan
+     *  kapatilabilir. */
     var webSearchEnabled: Boolean
-        get() = sp.getBoolean(KEY_WEB_SEARCH, false)
+        get() = sp.getBoolean(KEY_WEB_SEARCH, true)
         set(value) = sp.edit().putBoolean(KEY_WEB_SEARCH, value).apply()
 
     var backgroundRefreshEnabled: Boolean
@@ -49,8 +50,10 @@ class Prefs(context: Context) {
         get() = secure.get("model_api_key")
         set(value) = secure.put("model_api_key", value)
 
+    /** Varsayilan ACIK: ZekaTR Thinking Model (yerel GGUF) veya secilen saglayici
+     *  sohbete otomatik baglanir - kullanicinin ayrica Ayarlar'a gidip acmasi gerekmez. */
     var modelEnabled: Boolean
-        get() = sp.getBoolean(KEY_MODEL_ENABLED, false)
+        get() = sp.getBoolean(KEY_MODEL_ENABLED, true)
         set(value) = sp.edit().putBoolean(KEY_MODEL_ENABLED, value).apply()
 
     var locationEnabled: Boolean

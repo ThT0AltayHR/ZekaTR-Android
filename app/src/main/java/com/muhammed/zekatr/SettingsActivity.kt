@@ -134,24 +134,34 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
-    /** Klasordeki birden fazla GGUF dosyasi arasindan (agir/hafif) secim yapabilme. */
+    /** Bundled (ZekaTR Thinking Model) + kullanicinin sohbet ekranindan/SAF ile ekledigi
+     *  TUM .gguf dosyalari arasindan secim yapabilme. Ana ekrandaki "Model" butonu artik
+     *  ayni listeyi gosteriyor (bkz. MainActivity.showModelPicker) - bu, o akisin ayarlar
+     *  ekranindaki kisayolu. */
     private fun showLocalModelPicker() {
-        val models = ModelPaths.listGgufModels(this)
+        ModelPaths.syncBundledModelsFromAssets(this)
+        val models = ModelPaths.listAllModels(this)
         if (models.isEmpty()) {
             AlertDialog.Builder(this)
                 .setTitle("Yerel model bulunamadı")
-                .setMessage("Modeli şu klasöre kopyaladığından emin ol:\n${ModelPaths.ggufDir(this).absolutePath}\n\nBirden fazla .gguf dosyası koyarsan (örn. daha hafif bir Qwen sürümü), aralarında burada seçim yapabilirsin.")
+                .setMessage("Dahili model icin: app/src/main/assets/ggufmodel/ klasorune bir .gguf dosyasi koyup APK'yi yeniden derle.\n\nYa da sohbet ekranindaki Model butonundan 'Model Ekle' ile cihazindaki herhangi bir .gguf dosyasini secebilirsin.")
                 .setPositiveButton("Tamam", null)
                 .show()
             return
         }
         val active = ModelPaths.activeModelFileName(this)
-        val labels = models.map { "${it.name}\n${ModelPaths.sizeCategoryLabel(it)}${if (it.name == active) "  ✓ Aktif" else ""}" }.toTypedArray()
+        val labels = models.map {
+            val f = it.file
+            val sizeLabel = if (f != null) ModelPaths.sizeCategoryLabel(f) else ""
+            "${it.displayName}${if (it.isBundled) "  (dahili)" else ""}\n$sizeLabel${if (f?.name == active) "  ✓ Aktif" else ""}"
+        }.toTypedArray()
         AlertDialog.Builder(this)
             .setTitle("Yerel Model Seç")
             .setItems(labels) { _, which ->
-                ModelPaths.setActiveModel(this, models[which].name)
-                android.widget.Toast.makeText(this, "Aktif model: ${models[which].name}", android.widget.Toast.LENGTH_SHORT).show()
+                val chosen = models[which].file ?: return@setItems
+                ModelPaths.setActiveModel(this, chosen.name)
+                Prefs(this).modelProvider = ModelRouter.Provider.LOCAL
+                android.widget.Toast.makeText(this, "Aktif model: ${models[which].displayName}", android.widget.Toast.LENGTH_SHORT).show()
             }
             .setNegativeButton("Kapat", null)
             .show()
