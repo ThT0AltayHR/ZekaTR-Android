@@ -27,7 +27,7 @@ import java.util.zip.ZipInputStream
  * platform kisitlamasidir.
  *
  * TEK GUVENILIR COZUM: calistirilabilir dosyalari APK'nin nativeLibraryDir'ine
- * ("jniLibs/<abi>/*.so" olarak paketlenip kurulum aninda PackageManager
+ * ("jniLibs/<abi> altindaki .so dosyalari olarak paketlenip kurulum aninda PackageManager
  * tarafindan cikartilan, ozel olarak exec'e izin verilen tek dizin) koymak.
  * Bu yuzden derleme oncesi bir hazirlik adiminda (repack_bootstrap.py)
  * bootstrap icindeki TUM calistirilabilir dosyalar (bin/, libexec/, *.so)
