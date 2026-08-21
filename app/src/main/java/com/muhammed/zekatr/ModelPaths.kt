@@ -40,7 +40,7 @@ object ModelPaths {
     fun userModelDir(context: Context): File =
         File(context.filesDir, "ggufmodel/user").apply { mkdirs() }
 
-    /** Uygulama her acilista bir kere: assets/ggufmodel/*.gguf -> filesDir/ggufmodel/*.gguf */
+    /** Uygulama her acilista bir kere: assets/ggufmodel altindaki GGUF dosyalari -> filesDir/ggufmodel */
     fun syncBundledModelsFromAssets(context: Context) {
         val marker = File(context.filesDir, ".bundled_models_synced_v1")
         val assetNames = try { context.assets.list("ggufmodel")?.filter { it.endsWith(".gguf", true) } ?: emptyList() }
