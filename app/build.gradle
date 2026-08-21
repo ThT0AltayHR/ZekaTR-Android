@@ -84,6 +84,11 @@ android {
     packagingOptions {
         jniLibs {
             useLegacyPackaging = true
+            // lib_zt_* dosyalarinin bir kismi ELF degil, nativeLibraryDir icinde
+            // calistirilacak Termux payload'laridir. AGP bunlari llvm-strip'e
+            // gonderirse "not recognized as a valid object file" ile build kirilir.
+            // Gercek ELF kutuphaneleri strip edilmeye devam eder.
+            keepDebugSymbols += ["**/lib_zt_*.so"]
         }
     }
 }
